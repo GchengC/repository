@@ -59,6 +59,9 @@ git rm [nombre de archivo con extension]
 *posicionarse en stage (commit) realizados
 git reset --soft [id de commit]
 
+*posicionarse en stage (commit) realizados SIN REFLEJAR LOS CAMBIOS EN LOS ARCHIVO
+git reset --mixed [id de commit]
+
 *reestablecer stage (commit) realizados
 git reset --hard [id de commit]
 
