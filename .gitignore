@@ -1,4 +1,27 @@
+### MAVEN ###
 /target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### INTELLIJ IDEA ###
 /.idea/
 *.iml
-.esclipse
+*.iws
+*.ipr
+
+
+### INTELLIJ IDEA ###
+/.settings/
+*.project
+*.classpath
+*.settings
+*.springBeans
+*.factorypath
+*.apt_generated
+
+### NETBEANS ###
+/nbprohect/private/
+/build/
+/nbbuild/
+/dist/
+/nbdist/
+*.nb-gradle
