@@ -58,3 +58,9 @@ git rm [nombre de archivo con extension]
 
 *posicionarse en stage (commit) realizados
 git reset --soft [id de commit]
+
+*reestablecer stage (commit) realizados
+git reset --hard [id de commit]
+
+*log historico de cambios (sin omitir nada):
+git reflog
