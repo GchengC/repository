@@ -25,3 +25,7 @@
 /dist/
 /nbdist/
 *.nb-gradle
+
+
+### ANGULAR ###
+/node_modules/
