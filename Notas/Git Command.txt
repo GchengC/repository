@@ -44,3 +44,7 @@ git remove [ruta de carpeta]
 git remove [ruta/*.html] (todo aquello dentro de ruta con extension html) 
 
 
+Crear un alias
+git config --global alias.l "log" (la letra l servira para llamar al comando "log")
+git config --global alias.s "status" (la letra s servira para llamar al comando "status")
+
