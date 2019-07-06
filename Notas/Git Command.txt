@@ -1,0 +1,12 @@
+Revisar Version:
+git --version
+
+Crear Usuario de validacion:
+git config --global user.name "[nombre de usuario]"
+
+Crear email de usuario de validacion:
+git config --global user.email "[email (no necesita ser valido)]"
+
+Verificar datos de usuario:
+git config --global -l
+
