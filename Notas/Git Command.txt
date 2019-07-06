@@ -1,3 +1,6 @@
+AYUDA:
+git help [comando]
+
 Revisar Version:
 git --version
 
@@ -18,6 +21,9 @@ git status
 
 Agregar todos los archivos de la ruta para el control de version
 git add .
+git add [nombre de archivo]
+git add [ruta de carpeta]
+git add [ruta/*.html] (todo aquello dentro de ruta con extension html) 
 
 Confirmar archivos agregados al repositorio (-m: permite agregar un mensaje descriptivo del comando a realizar)
 git commit -m "Commit de estado Inicial"
@@ -27,3 +33,14 @@ git diff
 
 Volver a la ultima version subida de todos los archivos
 git checkout .
+
+Ver historico de cambios realizados
+git log
+
+Remover arhivo de add
+git remove .
+git remove [nombre de archivo]
+git remove [ruta de carpeta]
+git remove [ruta/*.html] (todo aquello dentro de ruta con extension html) 
+
+
