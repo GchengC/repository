@@ -10,3 +10,20 @@ git config --global user.email "[email (no necesita ser valido)]"
 Verificar datos de usuario:
 git config --global -l
 
+Iniciar gestion de Git
+git init
+
+Revisar estado del repositorio
+git status
+
+Agregar todos los archivos de la ruta para el control de version
+git add .
+
+Confirmar archivos agregados al repositorio (-m: permite agregar un mensaje descriptivo del comando a realizar)
+git commit -m "Commit de estado Inicial"
+
+Ver diferencias de repositorio desde el ultimo commit
+git diff
+
+Volver a la ultima version subida de todos los archivos
+git checkout .
