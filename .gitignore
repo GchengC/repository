@@ -1,3 +1,6 @@
+### LISTA DE GITIGNORE DE MITOCODE ###
+### https://github.com/github/gitignore ###
+
 ### MAVEN ###
 /target/
 !.mvn/wrapper/maven-wrapper.jar
