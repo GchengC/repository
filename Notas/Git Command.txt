@@ -126,4 +126,11 @@ git tag -a [nombre de etiqueta] [identificador de commit en log]
 git remote add origin [ruta que te da github al crear repositorio]
 
 *enviar a github tus archivos: NOTA: te puede preguntar la cuenta de github
-git push -u origin [rama]     
+git push -u origin [rama]
+
+*clonar repositorio ya creado en GitHub
+git clone [ruta que te da github para clonar repositorio]
+
+------------------Clase 12: Descargar ultimos cambios de repositorio-----------------
+*descargar cambios hechos en github hacia tu git
+git pull
