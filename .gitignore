@@ -2,11 +2,11 @@
 ### https://github.com/github/gitignore ###
 
 ### MAVEN ###
-*/target/*
+target/
 !.mvn/wrapper/maven-wrapper.jar
 
 ### INTELLIJ IDEA ###
-*/.idea/*
+.idea/
 *.iml
 *.iws
 *.ipr
