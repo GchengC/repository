@@ -1,0 +1,143 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+  <h1>
+    Bienvenido a Angular 8 - {{ title }}!
+  </h1>
+  <img width="300" alt="Angular Logo"
+    src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+</div>
+<h2>Here are some links to help you start: </h2>
+<ul>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://angular.io/cli">CLI Documentation</a></h2>
+  </li>
+  <li>
+    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+  </li>
+</ul>
+<br>
+<!--Mostrar component creado-->
+<hr>HOLA MUNDO CON COMPONENTES CREADOS MANUALMENTE
+<hr>
+<hola-mundo></hola-mundo>
+<br>
+
+<!--Mostrar component generado-->
+<hr>HOLA MUNDO CON COMPONENTES CREADOS AUTOMATICAMENTE
+<hr>
+<app-hola-mundo></app-hola-mundo>
+<br>
+<!--Mostrar arreglo angular Emmet: ul>li{{{Users[$@0]}}}*3-->
+<hr>MOSTRAR ARREGLOS DECLARADOS EN TS
+<hr>
+<ul>
+  <li>{{Users[0]}}</li>
+  <li>{{Users[1]}}</li>
+  <li>{{Users[2]}}</li>
+</ul>
+<br>
+
+<!--Mostrar arreglo angular recorriendo con ciclo for (dinamico)-->
+<!--Uso de directiva: *ngfor= "let [var] of [arreglo]" -->
+<!--let: indica que ahora [var] sera nuestra referencia en HTML al arreglo que queremos mostrar de TS  -->
+<hr>RECORRER ARREGLOS DINAMICAMENTE
+<hr>
+<ul>
+  <li *ngFor="let user of Users">
+    {{user}}
+  </li>
+</ul>
+<br>
+
+<!--Mostrar basado en un condicional-->
+<!--Uso de directiva: *ngIf= "[variable Angular]" -->
+<hr>CONDICIONAL ngIF
+<hr>
+<div *ngIf="activated">
+  Activado
+</div>
+<br>
+
+<!--Pasar parametros a un componente-->
+<!--Uso de directiva: *ngIf= "[variable Angular]" -->
+<!--Se coloca nameUser entre corchetes para indicar a angular que es un parametro de entrada-->
+<hr>PARAMETROS DE INICIALIZACION/ENTRADA EN TS
+<hr>
+<ul>
+  <app-user *ngFor="let user of Users" [nameUser]='user'></app-user>
+</ul>
+<br>
+
+<!--TypeScript-->
+<hr>USO DE VARIABLES EN TS
+<hr>
+<div>
+  <p>name: {{name}} </p>
+  <p>street: {{address.street}} </p>
+  <p>city: {{address.city}}</p>
+  <ul>
+    <li *ngFor="let hobby of hobbies">{{hobby}}</li>
+  </ul>
+</div>
+<br>
+
+<!--Eventos-->
+<!--Eventos son caracteristicas dentro de la etiqueta que van entre parentesis-->
+<hr>EVENTOS
+<hr>
+<div>
+  <!--referencias se denotan con un #-->
+  <!--las referencias sirven para denotar un parametro dentro de nuestro html, como un id-->
+  <form (submit)="addUser(newUser)">
+    <input type="text" #newUser>
+    <button>
+      Send User
+    </button>
+  </form>
+  <button (click)="sayHello()">Click Me!</button>
+
+  <ul>
+    <li *ngFor="let user of Users2">{{user}} <button (click)="deleteUser(user)">X</button></li>
+  </ul>
+
+</div>
+<br>
+
+<!--Doble enlace de datos, Data Bounding-->
+<!--Se debe importar la funcionalidad ngModel de angular/forms en app.module, seccion de importanciones-->
+<hr>DOBLE ENLACE DE DATOS
+<hr>
+<div>
+  <form>
+    <input type="text" name="name2" [(ngModel)]='name2'>
+    <input type="text" name="age2" [(ngModel)]='age2'>
+  </form>
+
+  name: {{name2}}<br>
+  age: {{age2}}
+</div>
+<br>
+
+<!--Aplicacion de servicios en Angular, creacion y uso por metodos httpclient de angular/commun/http-->
+<!--Se debe declarar en app.module: el servicio en providers, y la funcionalidad en imports-->
+<hr>USO DE SERVICIOS:https://jsonplaceholder.typicode.com/posts
+<hr>
+<div *ngFor="let post of posts">
+
+  <h3>{{post.title}}</h3>
+  <p>{{post.body}}</p>
+</div>
+<br>
+
+<!--Enrutamiento-->
+<hr>ENRUTAMIENTO
+<hr>
+<router-outlet></router-outlet>
+<ul>
+  <li><a routerLink="/">Home</a></li>
+  <li><a routerLink="/about">About</a></li>
+</ul>
+<br>
