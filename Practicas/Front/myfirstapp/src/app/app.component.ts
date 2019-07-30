@@ -19,7 +19,7 @@ export class AppComponent {
 
   title = 'myfirstapp';
   Users = ['Ryan', 'Joe', 'Cameron', 'Jhon', 'Bruce'];
-  activated = true;
+  activated = false;
   name2: string = 'Jhon Carter';
   age2: number = 28;
 
