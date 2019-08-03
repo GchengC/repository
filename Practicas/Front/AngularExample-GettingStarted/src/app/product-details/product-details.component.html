@@ -1,0 +1,10 @@
+<!--V.0.2.0-->
+<h2>Product Details</h2>
+
+<div *ngIf="product">
+    <h3>{{ product.name }}</h3>
+    <h4>{{ product.price | currency }}</h4>
+    <p>{{ product.description }}</p>
+</div>
+
+<button [routerLink]="['/']">Volver</button>
