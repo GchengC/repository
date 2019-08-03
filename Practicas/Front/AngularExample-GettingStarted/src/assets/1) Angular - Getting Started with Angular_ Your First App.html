@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<!-- saved from url=(0073)https://angular.io/start#click-here-to-create-a-new-project-in-stackblitz -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <title>Angular - Getting Started with Angular: Your First App</title>
+  <meta name="Description" content="Angular is a platform for building mobile and desktop web applications.
+    Join the community of millions of developers who build compelling user interfaces with Angular.">
+  <!--<base href="/">--><base href=".">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="search" type="application/opensearchdescription+xml" href="https://angular.io/assets/opensearch.xml">
+  <link rel="icon" type="image/x-icon" href="https://angular.io/assets/images/favicons/favicon.ico">
+  <link rel="icon" type="image/png" href="https://angular.io/assets/images/favicons/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="https://angular.io/assets/images/favicons/favicon-194x194.png" sizes="194x194">
+  <link rel="icon" type="image/png" href="https://angular.io/assets/images/favicons/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="https://angular.io/assets/images/favicons/favicon-16x16.png" sizes="16x16">
+  <link rel="apple-touch-icon" sizes="144x144" href="https://angular.io/assets/images/favicons/favicon-144x144.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://angular.io/assets/images/favicons/favicon-144x144.png">
+
+  <!-- NOTE: These need to be kept in sync with `ngsw-config.json`. -->
+  <link rel="stylesheet" href="./Angular - Getting Started with Angular_ Your First App_files/css">
+  <link rel="stylesheet" href="./Angular - Getting Started with Angular_ Your First App_files/css(1)">
+  <link rel="stylesheet" href="./Angular - Getting Started with Angular_ Your First App_files/icon">
+  <!-- -->
+
+  <link rel="manifest" href="https://angular.io/pwa-manifest.json">
+  <meta name="theme-color" content="#1976d2">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="translucent">
+
+  <script async="" src="./Angular - Getting Started with Angular_ Your First App_files/analytics.js.descarga"></script><script>
+    // Dynamically, pre-emptively, add `noindex`, which will be removed when the doc is ready and valid
+    tag = document.createElement('meta'); tag.name = 'robots'; tag.content = 'noindex';
+    document.head.appendChild(tag);
+  </script>
+
+  <!-- Google Analytics -->
+  <script>
+    // Note this is a customised version of the GA tracking snippet
+    // See the comments below for more info
+    (function (i, s, o, g, r, a, m) {
+      i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+        (i[r].q = i[r].q || []).push(arguments)
+      }, i[r].l = 1 * new Date(); a = s.createElement(o),
+        m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g;
+      ~i.name.indexOf('NG_DEFER_BOOTSTRAP') || // only load library if not running e2e tests
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+  </script>
+  <!-- End Google Analytics -->
+
+  <script>
+    // Report fatal errors to Google Analytics
+    window.onerror = function () {
+      ga('send', 'exception', { exDescription: formatError.apply(null, arguments), exFatal: true });
+
+      function formatError(msg, url, line, col, e) {
+        var stack;
+        msg = msg.replace(/^Error: /, '');
+        if (e) {
+          stack = e.stack
+            // strip the leading "Error: " from the stack trace
+            .replace(/^Error: /, '')
+            // strip the message from the stack trace, if present
+            .replace(msg + '\n', '')
+            // strip leading spaces
+            .replace(/^ +/gm, '')
+            // strip all leading "at " for each frame
+            .replace(/^at /gm, '')
+            // replace long urls with just the last segment: `filename:line:column`
+            .replace(/(?: \(|@)http.+\/([^/)]+)\)?(?:\n|$)/gm, '@$1\n')
+            // replace "eval code" in Edge
+            .replace(/ *\(eval code(:\d+:\d+)\)(?:\n|$)/gm, '@???$1\n')
+        } else {
+          line = line || '?';
+          col = col || '?';
+          stack = url + ':' + line + ':' + col;
+        }
+        return (msg + '\n' + stack).substr(0, 150);
+      }
+    };
+  </script>
+
+<link rel="stylesheet" href="./Angular - Getting Started with Angular_ Your First App_files/styles.afceb98c419997a943a1.css"><style>@media (-ms-high-contrast:active){.mat-toolbar{outline:solid 1px}}.mat-toolbar-row,.mat-toolbar-single-row{display:flex;box-sizing:border-box;padding:0 16px;width:100%;flex-direction:row;align-items:center;white-space:nowrap}.mat-toolbar-multiple-rows{display:flex;box-sizing:border-box;flex-direction:column;width:100%}.mat-toolbar-multiple-rows{min-height:64px}.mat-toolbar-row,.mat-toolbar-single-row{height:64px}@media (max-width:599px){.mat-toolbar-multiple-rows{min-height:56px}.mat-toolbar-row,.mat-toolbar-single-row{height:56px}}</style><style>.mat-icon{background-repeat:no-repeat;display:inline-block;fill:currentColor;height:24px;width:24px}.mat-icon.mat-icon-inline{font-size:inherit;height:inherit;line-height:inherit;width:inherit}[dir=rtl] .mat-icon-rtl-mirror{transform:scale(-1,1)}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon{display:block}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button .mat-icon,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button .mat-icon{margin:auto}</style><style>.mat-button .mat-button-focus-overlay,.mat-icon-button .mat-button-focus-overlay{opacity:0}.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:.04}@media (hover:none){.mat-button:hover .mat-button-focus-overlay,.mat-stroked-button:hover .mat-button-focus-overlay{opacity:0}}.mat-button,.mat-flat-button,.mat-icon-button,.mat-stroked-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:64px;line-height:36px;padding:0 16px;border-radius:4px;overflow:visible}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-button[disabled],.mat-flat-button[disabled],.mat-icon-button[disabled],.mat-stroked-button[disabled]{cursor:default}.mat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-button.cdk-program-focused .mat-button-focus-overlay,.mat-flat-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-flat-button.cdk-program-focused .mat-button-focus-overlay,.mat-icon-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-icon-button.cdk-program-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-stroked-button.cdk-program-focused .mat-button-focus-overlay{opacity:.12}.mat-button::-moz-focus-inner,.mat-flat-button::-moz-focus-inner,.mat-icon-button::-moz-focus-inner,.mat-stroked-button::-moz-focus-inner{border:0}.mat-raised-button{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:64px;line-height:36px;padding:0 16px;border-radius:4px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1)}.mat-raised-button::-moz-focus-inner{border:0}.mat-raised-button[disabled]{cursor:default}.mat-raised-button.cdk-keyboard-focused .mat-button-focus-overlay,.mat-raised-button.cdk-program-focused .mat-button-focus-overlay{opacity:.12}.mat-raised-button::-moz-focus-inner{border:0}._mat-animation-noopable.mat-raised-button{transition:none;animation:none}.mat-stroked-button{border:1px solid currentColor;padding:0 15px;line-height:34px}.mat-stroked-button .mat-button-focus-overlay,.mat-stroked-button .mat-button-ripple.mat-ripple{top:-1px;left:-1px;right:-1px;bottom:-1px}.mat-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:64px;line-height:36px;padding:0 16px;border-radius:4px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:56px;height:56px;padding:0;flex-shrink:0}.mat-fab::-moz-focus-inner{border:0}.mat-fab[disabled]{cursor:default}.mat-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-fab.cdk-program-focused .mat-button-focus-overlay{opacity:.12}.mat-fab::-moz-focus-inner{border:0}._mat-animation-noopable.mat-fab{transition:none;animation:none}.mat-fab .mat-button-wrapper{padding:16px 0;display:inline-block;line-height:24px}.mat-mini-fab{box-sizing:border-box;position:relative;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;cursor:pointer;outline:0;border:none;-webkit-tap-highlight-color:transparent;display:inline-block;white-space:nowrap;text-decoration:none;vertical-align:baseline;text-align:center;margin:0;min-width:64px;line-height:36px;padding:0 16px;border-radius:4px;overflow:visible;transform:translate3d(0,0,0);transition:background .4s cubic-bezier(.25,.8,.25,1),box-shadow 280ms cubic-bezier(.4,0,.2,1);min-width:0;border-radius:50%;width:40px;height:40px;padding:0;flex-shrink:0}.mat-mini-fab::-moz-focus-inner{border:0}.mat-mini-fab[disabled]{cursor:default}.mat-mini-fab.cdk-keyboard-focused .mat-button-focus-overlay,.mat-mini-fab.cdk-program-focused .mat-button-focus-overlay{opacity:.12}.mat-mini-fab::-moz-focus-inner{border:0}._mat-animation-noopable.mat-mini-fab{transition:none;animation:none}.mat-mini-fab .mat-button-wrapper{padding:8px 0;display:inline-block;line-height:24px}.mat-icon-button{padding:0;min-width:0;width:40px;height:40px;flex-shrink:0;line-height:40px;border-radius:50%}.mat-icon-button .mat-icon,.mat-icon-button i{line-height:24px}.mat-button-focus-overlay,.mat-button-ripple.mat-ripple{top:0;left:0;right:0;bottom:0;position:absolute;pointer-events:none;border-radius:inherit}.mat-button-ripple.mat-ripple:not(:empty){transform:translateZ(0)}.mat-button-focus-overlay{opacity:0;transition:opacity .2s cubic-bezier(.35,0,.25,1),background-color .2s cubic-bezier(.35,0,.25,1)}._mat-animation-noopable .mat-button-focus-overlay{transition:none}@media (-ms-high-contrast:active){.mat-button-focus-overlay{background-color:#fff}}@media (-ms-high-contrast:black-on-white){.mat-button-focus-overlay{background-color:#000}}.mat-button-ripple-round{border-radius:50%;z-index:1}.mat-button .mat-button-wrapper>*,.mat-fab .mat-button-wrapper>*,.mat-flat-button .mat-button-wrapper>*,.mat-icon-button .mat-button-wrapper>*,.mat-mini-fab .mat-button-wrapper>*,.mat-raised-button .mat-button-wrapper>*,.mat-stroked-button .mat-button-wrapper>*{vertical-align:middle}.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-prefix .mat-icon-button,.mat-form-field:not(.mat-form-field-appearance-legacy) .mat-form-field-suffix .mat-icon-button{display:block;font-size:inherit;width:2.5em;height:2.5em}@media (-ms-high-contrast:active){.mat-button,.mat-fab,.mat-flat-button,.mat-icon-button,.mat-mini-fab,.mat-raised-button{outline:solid 1px}}</style><style>.mat-drawer-container{position:relative;z-index:1;box-sizing:border-box;-webkit-overflow-scrolling:touch;display:block;overflow:hidden}.mat-drawer-container[fullscreen]{top:0;left:0;right:0;bottom:0;position:absolute}.mat-drawer-container[fullscreen].mat-drawer-opened{overflow:hidden}.mat-drawer-container.mat-drawer-container-explicit-backdrop .mat-drawer-side{z-index:3}.mat-drawer-container.ng-animate-disabled .mat-drawer-backdrop,.mat-drawer-container.ng-animate-disabled .mat-drawer-content,.ng-animate-disabled .mat-drawer-container .mat-drawer-backdrop,.ng-animate-disabled .mat-drawer-container .mat-drawer-content{transition:none}.mat-drawer-backdrop{top:0;left:0;right:0;bottom:0;position:absolute;display:block;z-index:3;visibility:hidden}.mat-drawer-backdrop.mat-drawer-shown{visibility:visible}.mat-drawer-transition .mat-drawer-backdrop{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:background-color,visibility}@media (-ms-high-contrast:active){.mat-drawer-backdrop{opacity:.5}}.mat-drawer-content{position:relative;z-index:1;display:block;height:100%;overflow:auto}.mat-drawer-transition .mat-drawer-content{transition-duration:.4s;transition-timing-function:cubic-bezier(.25,.8,.25,1);transition-property:transform,margin-left,margin-right}.mat-drawer{position:relative;z-index:4;display:block;position:absolute;top:0;bottom:0;z-index:3;outline:0;box-sizing:border-box;overflow-y:auto;transform:translate3d(-100%,0,0)}@media (-ms-high-contrast:active){.mat-drawer,[dir=rtl] .mat-drawer.mat-drawer-end{border-right:solid 1px currentColor}}@media (-ms-high-contrast:active){.mat-drawer.mat-drawer-end,[dir=rtl] .mat-drawer{border-left:solid 1px currentColor;border-right:none}}.mat-drawer.mat-drawer-side{z-index:2}.mat-drawer.mat-drawer-end{right:0;transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer{transform:translate3d(100%,0,0)}[dir=rtl] .mat-drawer.mat-drawer-end{left:0;right:auto;transform:translate3d(-100%,0,0)}.mat-drawer-inner-container{width:100%;height:100%;overflow:auto;-webkit-overflow-scrolling:touch}.mat-sidenav-fixed{position:fixed}</style><style>.mat-progress-bar{display:block;height:4px;overflow:hidden;position:relative;transition:opacity 250ms linear;width:100%}._mat-animation-noopable.mat-progress-bar{transition:none;animation:none}.mat-progress-bar .mat-progress-bar-element,.mat-progress-bar .mat-progress-bar-fill::after{height:100%;position:absolute;width:100%}.mat-progress-bar .mat-progress-bar-background{width:calc(100% + 10px)}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-background{display:none}}.mat-progress-bar .mat-progress-bar-buffer{transform-origin:top left;transition:transform 250ms ease}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-buffer{border-top:solid 5px;opacity:.5}}.mat-progress-bar .mat-progress-bar-secondary{display:none}.mat-progress-bar .mat-progress-bar-fill{animation:none;transform-origin:top left;transition:transform 250ms ease}@media (-ms-high-contrast:active){.mat-progress-bar .mat-progress-bar-fill{border-top:solid 4px}}.mat-progress-bar .mat-progress-bar-fill::after{animation:none;content:'';display:inline-block;left:0}.mat-progress-bar[dir=rtl],[dir=rtl] .mat-progress-bar{transform:rotateY(180deg)}.mat-progress-bar[mode=query]{transform:rotateZ(180deg)}.mat-progress-bar[mode=query][dir=rtl],[dir=rtl] .mat-progress-bar[mode=query]{transform:rotateZ(180deg) rotateY(180deg)}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-fill,.mat-progress-bar[mode=query] .mat-progress-bar-fill{transition:none}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-primary,.mat-progress-bar[mode=query] .mat-progress-bar-primary{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-primary-indeterminate-translate 2s infinite linear;left:-145.166611%}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-primary.mat-progress-bar-fill::after,.mat-progress-bar[mode=query] .mat-progress-bar-primary.mat-progress-bar-fill::after{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-primary-indeterminate-scale 2s infinite linear}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-secondary,.mat-progress-bar[mode=query] .mat-progress-bar-secondary{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-secondary-indeterminate-translate 2s infinite linear;left:-54.888891%;display:block}.mat-progress-bar[mode=indeterminate] .mat-progress-bar-secondary.mat-progress-bar-fill::after,.mat-progress-bar[mode=query] .mat-progress-bar-secondary.mat-progress-bar-fill::after{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-secondary-indeterminate-scale 2s infinite linear}.mat-progress-bar[mode=buffer] .mat-progress-bar-background{-webkit-backface-visibility:hidden;backface-visibility:hidden;animation:mat-progress-bar-background-scroll 250ms infinite linear;display:block}.mat-progress-bar._mat-animation-noopable .mat-progress-bar-background,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-buffer,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-fill,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-fill::after,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-primary,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-primary.mat-progress-bar-fill::after,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-secondary,.mat-progress-bar._mat-animation-noopable .mat-progress-bar-secondary.mat-progress-bar-fill::after{animation:none;transition:none}@keyframes mat-progress-bar-primary-indeterminate-translate{0%{transform:translateX(0)}20%{animation-timing-function:cubic-bezier(.5,0,.70173,.49582);transform:translateX(0)}59.15%{animation-timing-function:cubic-bezier(.30244,.38135,.55,.95635);transform:translateX(83.67142%)}100%{transform:translateX(200.61106%)}}@keyframes mat-progress-bar-primary-indeterminate-scale{0%{transform:scaleX(.08)}36.65%{animation-timing-function:cubic-bezier(.33473,.12482,.78584,1);transform:scaleX(.08)}69.15%{animation-timing-function:cubic-bezier(.06,.11,.6,1);transform:scaleX(.66148)}100%{transform:scaleX(.08)}}@keyframes mat-progress-bar-secondary-indeterminate-translate{0%{animation-timing-function:cubic-bezier(.15,0,.51506,.40969);transform:translateX(0)}25%{animation-timing-function:cubic-bezier(.31033,.28406,.8,.73371);transform:translateX(37.65191%)}48.35%{animation-timing-function:cubic-bezier(.4,.62704,.6,.90203);transform:translateX(84.38617%)}100%{transform:translateX(160.27778%)}}@keyframes mat-progress-bar-secondary-indeterminate-scale{0%{animation-timing-function:cubic-bezier(.15,0,.51506,.40969);transform:scaleX(.08)}19.15%{animation-timing-function:cubic-bezier(.31033,.28406,.8,.73371);transform:scaleX(.4571)}44.15%{animation-timing-function:cubic-bezier(.4,.62704,.6,.90203);transform:scaleX(.72796)}100%{transform:scaleX(.08)}}@keyframes mat-progress-bar-background-scroll{to{transform:translateX(-8px)}}</style><script charset="utf-8" src="./Angular - Getting Started with Angular_ Your First App_files/toc-toc-module-ngfactory-es2015.38f06e6f22fcb2d0c47b.js.descarga"></script><script charset="utf-8" src="./Angular - Getting Started with Angular_ Your First App_files/default_code-code-example-module-ngfactory_code-code-tabs-module-ngfactory-es2015.49edad2450be172692d5.js.descarga"></script><script charset="utf-8" src="./Angular - Getting Started with Angular_ Your First App_files/code-code-example-module-ngfactory-es2015.379988c58b43b336127a.js.descarga"></script><script charset="utf-8" src="./Angular - Getting Started with Angular_ Your First App_files/live-example-live-example-module-ngfactory-es2015.69de902f09db17a89e01.js.descarga"></script><script charset="utf-8" src="./Angular - Getting Started with Angular_ Your First App_files/assets-js-prettify-js-es2015.189c788d350eca7c809b.js.descarga"></script></head>
+
+<body>
+
+  <aio-shell ng-version="8.1.0-next.1" class="mode-stable sidenav-open page-start folder-start view-SideNav aio-notification-hide"><div id="top-of-page"></div><!----><mat-toolbar class="app-toolbar no-print mat-toolbar mat-primary mat-toolbar-multiple-rows" color="primary"><mat-toolbar-row class="notification-container mat-toolbar-row"><aio-notification expirationdate="2019-03-01" notificationid="survey-february-2019" class="ng-tns-c2-0 ng-trigger ng-trigger-hideAnimation" style="height: 0px;"><span class="content"><a href="http://bit.ly/angular-survey-2019"><mat-icon aria-label="Announcement" class="icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="insert_comment" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></mat-icon><span class="message">Help Angular by taking a <b>1 minute survey</b>!</span><span class="action-button">Go to survey</span></a></span><button class="close-button mat-icon-button" aria-label="Close" mat-icon-button=""><span class="mat-button-wrapper"><mat-icon aria-label="Dismiss notification" class="mat-icon notranslate ng-tns-c2-0 mat-icon-no-color" role="img" svgicon="close" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path><path d="M0 0h24v24H0z" fill="none"></path></svg></mat-icon></span><div class="mat-button-ripple mat-ripple mat-button-ripple-round" matripple=""></div><div class="mat-button-focus-overlay"></div></button></aio-notification></mat-toolbar-row><mat-toolbar-row class="mat-toolbar-row"><button class="hamburger mat-button" mat-button="" title="Docs menu"><span class="mat-button-wrapper"><mat-icon class="mat-icon notranslate mat-icon-no-color" role="img" svgicon="menu" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"></path></svg></mat-icon></span><div class="mat-button-ripple mat-ripple" matripple=""></div><div class="mat-button-focus-overlay"></div></button><a class="nav-link home" href="https://angular.io/"><!----><img alt="Home" height="40" src="./Angular - Getting Started with Angular_ Your First App_files/logo-nav@2x.png" title="Home" width="150" class="ng-star-inserted"><!----></a><!----><aio-top-menu class="ng-star-inserted"><ul role="navigation"><!----><li class="ng-star-inserted"><a class="nav-link" href="https://angular.io/features" title="Features"><span class="nav-link-inner">Features</span></a></li><li class="ng-star-inserted"><a class="nav-link" href="https://angular.io/docs" title="Docs"><span class="nav-link-inner">Docs</span></a></li><li class="ng-star-inserted"><a class="nav-link" href="https://angular.io/resources" title="Resources"><span class="nav-link-inner">Resources</span></a></li><li class="ng-star-inserted"><a class="nav-link" href="https://angular.io/events" title="Events"><span class="nav-link-inner">Events</span></a></li><li class="ng-star-inserted"><a class="nav-link" href="https://blog.angular.io/" title="Blog"><span class="nav-link-inner">Blog</span></a></li></ul></aio-top-menu><aio-search-box class="search-container"><input aria-label="search" placeholder="Search" type="search"></aio-search-box><div class="toolbar-external-icons-container"><a aria-label="Angular on twitter" href="https://twitter.com/angular" title="Twitter"><mat-icon class="mat-icon notranslate mat-icon-no-color" role="img" svgicon="logos:twitter" aria-hidden="true"><svg focusable="false" viewBox="0 0 50 59" xmlns="http://www.w3.org/2000/svg"><path d="M50,9.3c-1.8,0.8-3.8,1.4-5.9,1.6c2.1-1.3,3.7-3.3,4.5-5.7c-2,1.2-4.2,2-6.5,2.5c-1.9-2-4.5-3.2-7.5-3.2c-5.7,0-10.3,4.6-10.3,10.3c0,0.8,0.1,1.6,0.3,2.3C16.1,16.7,8.5,12.6,3.5,6.4c-0.9,1.5-1.4,3.3-1.4,5.2c0,3.6,1.8,6.7,4.6,8.5C5,20,3.4,19.6,2,18.8c0,0,0,0.1,0,0.1c0,5,3.5,9.1,8.2,10.1c-0.9,0.2-1.8,0.4-2.7,0.4c-0.7,0-1.3-0.1-1.9-0.2c1.3,4.1,5.1,7,9.6,7.1c-3.5,2.8-7.9,4.4-12.7,4.4c-0.8,0-1.6,0-2.4-0.1c4.5,2.9,9.9,4.6,15.7,4.6c18.9,0,29.2-15.6,29.2-29.2c0-0.4,0-0.9,0-1.3C46.9,13.2,48.6,11.4,50,9.3z"></path></svg></mat-icon></a><a aria-label="Angular on github" href="https://github.com/angular/angular" title="GitHub"><mat-icon class="mat-icon notranslate mat-icon-no-color" role="img" svgicon="logos:github" aria-hidden="true"><svg focusable="false" viewBox="0 0 51.8 50.4" xmlns="http://www.w3.org/2000/svg"><path d="M25.9,0.2C11.8,0.2,0.3,11.7,0.3,25.8c0,11.3,7.3,20.9,17.5,24.3c1.3,0.2,1.7-0.6,1.7-1.2c0-0.6,0-2.6,0-4.8c-7.1,1.5-8.6-3-8.6-3c-1.2-3-2.8-3.7-2.8-3.7c-2.3-1.6,0.2-1.6,0.2-1.6c2.6,0.2,3.9,2.6,3.9,2.6c2.3,3.9,6,2.8,7.5,2.1c0.2-1.7,0.9-2.8,1.6-3.4c-5.7-0.6-11.7-2.8-11.7-12.7c0-2.8,1-5.1,2.6-6.9c-0.3-0.7-1.1-3.3,0.3-6.8c0,0,2.1-0.7,7,2.6c2-0.6,4.2-0.9,6.4-0.9c2.2,0,4.4,0.3,6.4,0.9c4.9-3.3,7-2.6,7-2.6c1.4,3.5,0.5,6.1,0.3,6.8c1.6,1.8,2.6,4.1,2.6,6.9c0,9.8-6,12-11.7,12.6c0.9,0.8,1.7,2.4,1.7,4.7c0,3.4,0,6.2,0,7c0,0.7,0.5,1.5,1.8,1.2c10.2-3.4,17.5-13,17.5-24.3C51.5,11.7,40.1,0.2,25.9,0.2z"></path></svg></mat-icon></a></div></mat-toolbar-row></mat-toolbar><!----><mat-sidenav-container class="sidenav-container mat-drawer-container mat-sidenav-container mat-drawer-transition has-floating-toc" role="main"><!----><div class="mat-drawer-backdrop ng-star-inserted"></div><div class="cdk-visually-hidden cdk-focus-trap-anchor" aria-hidden="true"></div><mat-sidenav class="sidenav mat-drawer mat-sidenav ng-tns-c6-1 ng-trigger ng-trigger-transform mat-drawer-side ng-star-inserted" tabindex="-1" style="transform: none; visibility: visible;"><div class="mat-drawer-inner-container"><!----><aio-nav-menu><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-1 collapsed" href="https://angular.io/docs" title="Introduction to the Angular documentation"><span>Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 expanded selected ng-star-inserted" type="button" title="Learn the basics by building your first Angular application." aria-pressed="true"><span>Getting Started</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 expanded selected"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 expanded selected" href="https://angular.io/start" title="Introduction to Angular&#39;s component model, template syntax, and component communication."><span>Your First App</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/start/routing" title="Introduction to routing between components using the browser&#39;s URL."><span>Routing</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/start/data" title="Introduction to services and accessing external data via HTTP."><span>Managing Data</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/start/forms" title="Learn about fetching and managing data from users with forms."><span>Forms</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/start/deployment" title="Move to local development, or deploy your application to Firebase or your own server."><span>Deployment</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-1 collapsed" href="https://angular.io/guide/setup-local" title="Setting up for local development with the Angular CLI."><span>Setup</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="The fundamentals of Angular" aria-pressed="false"><span>Fundamentals</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="The Tour of Heroes app is used as a reference point in many Angular examples." aria-pressed="false"><span>Tour of Heroes App</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial" title="Introduction to the Tour of Heroes tutorial"><span>Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt0" title="Creating the application shell"><span>The Application Shell</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt1" title="Part 1: Build a simple hero editor"><span>1. The Hero Editor</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt2" title="Part 2: Build a master/detail page with a list of heroes."><span>2. Displaying a List</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt3" title="Part 3: Refactor the master/detail view into separate components."><span>3. Master/Detail Components</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt4" title="Part 4: Create a reusable service to manage hero data."><span>4. Services</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt5" title="Part 5: Add the Angular router and navigate among the views."><span>5. Routing</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/tutorial/toh-pt6" title="Part 6: Use HTTP to retrieve and save hero data."><span>6. HTTP</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="The basic building blocks of Angular applications." aria-pressed="false"><span>Architecture</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/architecture" title="Basic building blocks of Angular applications."><span>Architecture Overview</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/architecture-modules" title="About NgModules."><span>Intro to Modules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/architecture-components" title="About Components, Templates, and Views."><span>Intro to Components</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/architecture-services" title="About services and dependency injection."><span>Intro to Services and DI</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/architecture-next-steps" title="Beyond the basics."><span>Next Steps</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Building dynamic views with data binding" aria-pressed="false"><span>Components &amp; Templates</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/displaying-data" title="Property binding helps show app data in the UI."><span>Displaying Data</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/template-syntax" title="Learn how to write templates that display data and consume user events with the help of data binding."><span>Template Syntax</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/user-input" title="User input triggers DOM events. Angular listens to those events with event bindings that funnel updated values back into your app&#39;s components and models."><span>User Input</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/lifecycle-hooks" title="Angular calls lifecycle hook methods on directives and components as it creates, changes, and destroys them."><span>Lifecycle Hooks</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/component-interaction" title="Share information between different directives and components."><span>Component Interaction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/component-styles" title="Add CSS styles that are specific to a component."><span>Component Styles</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dynamic-component-loader" title="Load components dynamically."><span>Dynamic Components</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/elements" title="Convert components to Custom Elements."><span>Angular Elements</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/attribute-directives" title="Attribute directives attach behavior to elements."><span>Attribute Directives</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/structural-directives" title="Structural directives manipulate the layout of the page."><span>Structural Directives</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/pipes" title="Pipes transform displayed values within a template."><span>Pipes</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Angular Forms" aria-pressed="false"><span>Forms</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/forms-overview" title="A form creates a cohesive, effective, and compelling data entry experience. An Angular form coordinates a set of data-bound user controls, tracks changes, validates input, and presents errors."><span>Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/reactive-forms" title="Create a reactive form using FormBuilder, groups, and arrays."><span>Reactive Forms</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/forms" title="Create a template-driven form using directives and Angular template syntax."><span>Template-driven Forms</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/form-validation" title="Validate user&#39;s form entries."><span>Form Validation</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dynamic-form" title="Render dynamic forms with FormGroup."><span>Dynamic Forms</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Observables &amp; RxJS" aria-pressed="false"><span>Observables &amp; RxJS</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/observables" title=""><span>Observables</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/rx-library" title=""><span>The RxJS Library</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/observables-in-angular" title=""><span>Observables in Angular</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/practical-observable-usage" title=""><span>Practical Usage</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/comparing-observables" title=""><span>Compare to Other Techniques</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/bootstrapping" title="Tell Angular how to construct and bootstrap the app in the root &quot;AppModule&quot;."><span>Bootstrapping</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="NgModules." aria-pressed="false"><span>NgModules</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/ngmodules" title="Use NgModules to make your apps efficient."><span>NgModules Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/ngmodule-vs-jsmodule" title="Differentiate between JavaScript modules and NgModules."><span>JS Modules vs NgModules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/frequent-ngmodules" title="Introduction to the most frequently used NgModules."><span>Frequently Used NgModules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/module-types" title="Description of the different types of feature modules."><span>Types of Feature Modules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/entry-components" title="All about entry components in Angular."><span>Entry Components</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/feature-modules" title="Create feature modules to organize your code."><span>Feature Modules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/providers" title="Providers and NgModules."><span>Providers</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/singleton-services" title="Creating singleton services."><span>Singleton Services</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/lazy-loading-ngmodules" title="Lazy load modules to speed up your apps."><span>Lazy Loading Feature Modules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/sharing-ngmodules" title="Share NgModules to streamline your apps."><span>Sharing NgModules</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/ngmodule-api" title="Understand the details of NgModules."><span>NgModule API</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/ngmodule-faq" title="Answers to frequently asked questions about NgModules."><span>NgModule FAQs</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Dependency Injection: creating and injecting services" aria-pressed="false"><span>Dependency Injection</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dependency-injection" title="Angular&#39;s dependency injection system creates and delivers dependent services to Angular-created classes."><span>Angular Dependency Injection</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/hierarchical-dependency-injection" title="An injector tree parallels the component tree and supports nested dependencies."><span>Hierarchical Injectors</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dependency-injection-providers" title="More about the different kinds of providers."><span>DI Providers</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dependency-injection-in-action" title="Techniques for dependency injection."><span>DI in Action</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/dependency-injection-navtree" title="Use the injection tree to find parent components."><span>Navigate the Component Tree</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/http" title="Use HTTP to talk to a remote server."><span>HttpClient</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/router" title="Discover the basics of screen navigation with the Angular Router."><span>Routing &amp; Navigation</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="A guide to Angular&#39;s animation system." aria-pressed="false"><span>Animations</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/animations" title="Basic techniques in Angular animations."><span>Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/transition-and-triggers" title="Advanced techniques in transition and triggers."><span>Transition and Triggers</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/complex-animation-sequences" title="Complex Angular animation sequences."><span>Complex Sequences</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/reusable-animations" title="Creating reusable animations."><span>Reusable Animations</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/route-animations" title="Animate route transitions."><span>Route Transition Animations</span></a></div><!----></aio-nav-item></div></div></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Techniques for putting Angular to work in your environment" aria-pressed="false"><span>Techniques</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/security" title="Developing for content security in Angular applications."><span>Security</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/i18n" title="Translate the app&#39;s template text into multiple languages."><span>Internationalization (i18n)</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/accessibility" title="Design apps to be accessible to all users."><span>Accessibility</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Angular service workers: Controlling caching of application resources." aria-pressed="false"><span>Service Workers &amp; PWA</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/service-worker-intro" title="Angular&#39;s implementation of service workers improves user experience with slow or unreliable network connectivity."><span>Introduction</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/service-worker-getting-started" title="Enabling the service worker in a CLI project and observing behavior in the browser."><span>Getting Started</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/app-shell" title="Enabling the App Shell in a CLI project."><span>App Shell</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/service-worker-communications" title="Services that enable you to interact with an Angular service worker."><span>Service Worker Communication</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/service-worker-devops" title="Running applications with service workers, managing application update, debugging, and killing applications."><span>Service Worker in Production</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/service-worker-config" title="Configuring service worker caching behavior."><span>Service Worker Configuration</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/universal" title="Render HTML server-side with Angular Universal."><span>Server-side Rendering</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Incrementally upgrade an AngularJS application to Angular." aria-pressed="false"><span>Upgrading from AngularJS</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/upgrade" title="Incrementally upgrade an AngularJS application to Angular."><span>Upgrading Instructions</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/upgrade-performance" title="Upgrade from AngularJS to Angular in a more flexible way."><span>Upgrading for Performance</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/ajs-quick-reference" title="Learn how AngularJS concepts and techniques map to Angular."><span>AngularJS-Angular Concepts</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Extending Angular with shared libraries." aria-pressed="false"><span>Angular Libraries</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/libraries" title="Understand how and when to use or create libraries."><span>Libraries Overview</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/using-libraries" title="Integrate published libraries into an app."><span>Using Published Libraries</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/creating-libraries" title="Extend Angular by creating, publishing, and using your own libraries."><span>Creating Libraries</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Understanding schematics." aria-pressed="false"><span>Schematics</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/schematics" title="Understand how schematics are used in Angular."><span>Schematics Overview</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/schematics-authoring" title="Understand the structure of a schematic."><span>Authoring Schematics</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/schematics-for-libraries" title="Use schematics to integrate your library with the Angular CLI."><span>Schematics for Libraries</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/cli-builder" title="Using builders to customize Angular CLI."><span>CLI Builders</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/ivy" title="Opting into Angular Ivy with Angular CLI."><span>Angular Ivy</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/web-worker" title="Using Web Workers with Angular CLI."><span>Web Workers</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Build, testing, and deployment information." aria-pressed="false"><span>Dev Workflow</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/aot-compiler" title="Learn why and how to use the Ahead-of-Time (AOT) compiler."><span>Ahead-of-Time Compilation</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/build" title="Building and serving Angular apps."><span>Building &amp; Serving</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/bazel" title="How to set up your environment to build and test with Bazel."><span>Building with Bazel</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/testing" title="Techniques and practices for testing an Angular app."><span>Testing</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/deployment" title="Learn how to deploy your Angular app."><span>Deployment</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-2 collapsed ng-star-inserted" type="button" title="Integrate with your development environment and tools." aria-pressed="false"><span>Dev Tool Integration</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-2 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-3 collapsed" href="https://angular.io/guide/language-service" title="Use Angular Language Service to speed up dev time."><span>Language Service</span></a></div><!----></aio-nav-item></div></div></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Workspace and project structure, configuration files." aria-pressed="false"><span>Configuration</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/file-structure" title="How your Angular workspace looks on your filesystem."><span>Project File Structure</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/workspace-config" title="The &quot;angular.json&quot; file contains workspace and project configuration defaults for Angular CLI commands."><span>Workspace Configuration</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/npm-packages" title="Description of npm packages required at development time and at runtime."><span>npm Dependencies</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/typescript-configuration" title="TypeScript configuration for Angular developers."><span>TypeScript Configuration</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/browser-support" title="Browser support and polyfills guide."><span>Browser Support</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Angular release practices, updating, and upgrading." aria-pressed="false"><span>Release Information</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/updating" title="Information about updating Angular applications and libraries to the latest version."><span>Keeping Up-to-Date</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/releases" title="Angular versioning, release, support, and deprecation policies and practices."><span>Release Practices</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/deprecations" title="Summary of Angular APIs and features that are deprecated."><span>Deprecations</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Summaries of Angular syntax, coding, and terminology." aria-pressed="false"><span>Quick Reference</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/cheatsheet" title="A quick guide to common Angular coding techniques."><span>Cheat Sheet</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/styleguide" title="Write Angular with style."><span>Style Guide</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/guide/glossary" title="Brief definitions of the most important words in the Angular vocabulary."><span>Glossary</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><!----><div class="ng-star-inserted"><!----><!----><button class="vertical-menu-item heading level-1 collapsed ng-star-inserted" type="button" title="Angular CLI command reference." aria-pressed="false"><span>CLI Commands</span><mat-icon class="rotating-icon mat-icon notranslate mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><div class="heading-children level-1 collapsed"><!----><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli" title="An introduction to the CLI tool, commands, and syntax."><span>Overview</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/usage-analytics-gathering" title="For administrators, guide to gathering usage analytics from your users."><span>Usage Analytics</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/add" title="ng add."><span>ng add</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/analytics" title="ng analytics."><span>ng analytics</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/build" title="ng build."><span>ng build</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/config" title="ng config."><span>ng config</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/doc" title="ng doc."><span>ng doc</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/e2e" title="ng e2e."><span>ng e2e</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/generate" title="ng generate."><span>ng generate</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/help" title="ng help."><span>ng help</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/lint" title="ng lint."><span>ng lint</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/new" title="ng new."><span>ng new</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/run" title="ng run."><span>ng run</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/serve" title="ng serve."><span>ng serve</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/test" title="ng test."><span>ng test</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/update" title="ng update."><span>ng update</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/version" title="ng version."><span>ng version</span></a></div><!----></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-2 collapsed" href="https://angular.io/cli/xi18n" title="ng xi18n."><span>ng xi18n</span></a></div><!----></aio-nav-item></div></div></aio-nav-item><aio-nav-item class="ng-star-inserted"><!----><div class="ng-star-inserted"><a class="vertical-menu-item level-1 collapsed" href="https://angular.io/api" title="Details of the Angular packages, classes, interfaces, and other types."><span>API</span></a></div><!----></aio-nav-item></aio-nav-menu><div class="doc-version"><aio-select><div class="form-select-menu"><button class="form-select-button"><span><strong></strong></span><!----><span>stable (v8.2.0)</span></button><!----></div></aio-select></div></div></mat-sidenav><div class="cdk-visually-hidden cdk-focus-trap-anchor" aria-hidden="true"></div><!----><mat-sidenav-content cdkscrollable="" class="mat-drawer-content mat-sidenav-content ng-star-inserted" style="margin-left: 278px;"><main class="sidenav-content" role="main" id="start"><aio-mode-banner><!----></aio-mode-banner><aio-doc-viewer class=""><div style="opacity: 1;">
+
+
+  <div class="github-links">
+    <a href="https://github.com/angular/angular/edit/master/aio/content/start/index.md?message=docs%3A%20describe%20your%20change..." aria-label="Suggest Edits" title="Suggest Edits"><i class="material-icons" aria-hidden="true" role="img">mode_edit</i></a>
+  </div>
+
+
+<div class="content">
+<h1 id="getting-started-with-angular-your-first-app">Getting Started with Angular: Your First App<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#getting-started-with-angular-your-first-app"><i class="material-icons">link</i></a></h1><aio-toc class="embedded" ng-version="8.1.0-next.1"><!----><div class="toc-inner no-print collapsed ng-star-inserted"><!----><!----><button aria-label="Expand/collapse contents" class="toc-heading embedded secondary ng-star-inserted" title="Expand/collapse contents" type="button" aria-pressed="false"> Contents <mat-icon class="rotating-icon mat-icon notranslate collapsed mat-icon-no-color" role="img" svgicon="keyboard_arrow_right" aria-hidden="true"><svg focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z"></path></svg></mat-icon></button><ul class="toc-list embedded"><!----><!----><!----><!----><!----><!----><li title="Create a new projectlink" class="h2 ng-star-inserted"><a href="https://angular.io/start#create-a-new-project">Create a new project</a></li><!----><!----><!----><li title="Template syntaxlink" class="h2 ng-star-inserted"><a href="https://angular.io/start#template-syntax">Template syntax</a></li><!----><!----><!----><li title="Componentslink" class="h2 ng-star-inserted"><a href="https://angular.io/start#components">Components</a></li><!----><!----><!----><li title="Inputlink" class="h2 secondary ng-star-inserted"><a href="https://angular.io/start#input">Input</a></li><!----><!----><!----><li title="Outputlink" class="h2 secondary ng-star-inserted"><a href="https://angular.io/start#output">Output</a></li><!----><!----><!----><li title="Next stepslink" class="h2 secondary ng-star-inserted"><a href="https://angular.io/start#next-steps">Next steps</a></li><!----></ul><!----><button aria-label="Expand/collapse contents" class="toc-more-items embedded material-icons collapsed ng-star-inserted" title="Expand/collapse contents" type="button" aria-pressed="false"></button></div></aio-toc>
+<p>Welcome to Angular!</p>
+<p>This tutorial introduces you to the essentials of Angular.
+It leverages what you already know about HTML and JavaScript—plus some useful Angular features—to build a simple online store application, with a catalog, shopping cart, and check-out form.
+You don't need to install anything: you'll build the app using the <a href="https://stackblitz.com/" title="StackBlitz web site">StackBlitz</a> online development environment.</p>
+<div class="alert is-helpful">
+<p>We are using the StackBlitz Generator to show you a ready-made, simple application that you can examine and play with interactively. In actual development you will typically use the <a href="https://angular.io/guide/glossary#command-line-interface-cli">Angular CLI</a>, a powerful command-line tool that lets you generate and modify applications. For more information, see the <a href="https://angular.io/cli">CLI Overview</a>.</p>
+</div>
+<div class="callout is-helpful">
+<header>New to web development?</header>
+<p>You'll find many resources to complement the Angular docs. Mozilla's MDN docs include both <a href="https://developer.mozilla.org/en-US/docs/Learn/HTML" title="Learning HTML: Guides and tutorials">HTML</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" title="JavaScript">JavaScript</a> introductions. <a href="https://www.typescriptlang.org/docs/home.html" title="TypeScript documentation">TypeScript's docs</a> include a 5-minute tutorial. Various online course platforms, such as <a href="http://www.udemy.com/" title="Udemy online courses">Udemy</a> and <a href="https://www.codecademy.com/" title="Codeacademy online courses">Codecademy</a>, also cover web development basics. </p>
+</div> 
+<a id="new-project"></a>
+<h2 id="create-a-new-project">Create a new project<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#create-a-new-project"><i class="material-icons">link</i></a></h2>
+<h4 id="click-here-to-create-a-new-project-in-stackblitz">
+<live-example name="getting-started-v0" nodownload="" ng-version="8.1.0-next.1"><span style="display: none">Click here to create a new project in StackBlitz.</span><span><!----><!----><!----><span class="ng-star-inserted"><a target="_blank" href="https://angular.io/generated/live-examples/getting-started-v0/stackblitz.html" title="Click here to create a new project in StackBlitz.">Click here to create a new project in StackBlitz.</a><!----></span></span></live-example> 
+<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#click-here-to-create-a-new-project-in-stackblitz"><i class="material-icons">link</i></a></h4>
+<p>StackBlitz creates a starter Angular app.
+We've seeded this particular app with a top bar—containing the store name and checkout icon—and the title for a product list. </p>
+<figure>
+    <img src="./Angular - Getting Started with Angular_ Your First App_files/new-app.png" alt="Starter online store app" width="260" height="248">
+</figure>
+<div class="callout is-helpful">
+<header>StackBlitz tips</header>
+<ul>
+<li>Log into StackBlitz, so you can save and resume your work. If you have a GitHub account, you can log into StackBlitz with that account. In order to save your progress, first fork the project using the Fork button at the top left, then you'll be able to save your work to your own StackBlitz account by clicking the Save button.</li>
+<li>To copy a code example from this tutorial, click the icon at the top right of the code example box, and then paste the code snippet from the clipboard into StackBlitz. </li>
+<li>If the StackBlitz preview pane isn't showing what you expect, save and then click the refresh button. </li>
+<li>StackBlitz is continually improving, so there may be slight differences in generated code, but the app's behavior will be the same.</li>
+</ul>
+</div>
+<a id="template-syntax"></a>
+<h2 id="template-syntax">Template syntax<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#template-syntax"><i class="material-icons">link</i></a></h2>
+<!-- 
+Angular extends HTML with a template syntax that gives components control over the display of content. 
+This section introduces five things you can do in an Angular template to affect what your user sees, based on the component's state and behavior: 
+-->
+<p>Angular's template syntax extends HTML and JavaScript.
+In this section, you'll learn about template syntax by enhancing the "Products" area. </p>
+<p>(So that you can focus on the template syntax, the following steps use predefined product data and methods from the <code>product-list.component.ts</code> file.) </p>
+<ol>
+<li>
+<p>In the <code>product-list</code> folder, open the template file <code>product-list.component.html</code>. </p>
+</li>
+<li>
+<p>Modify the product list template to display a list of product names. </p>
+<ol>
+<li>
+<p>We want each product in the list to be displayed the same way, one after the other on the page. To iterate over the predefined list of products, use the <code>*<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a></code> directive. Put the <code>*<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a></code> directive on a <code>&lt;div&gt;</code>, as shown below:  </p>
+<code-example header="src/app/product-list/product-list.component.html" path="getting-started/src/app/product-list/product-list.component.2.html" region="ngfor" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;h2&gt;Products&lt;/h2&gt;
+
+&lt;div *<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a>="let product of products"&gt;
+&lt;/div&gt;
+
+</div><!----><header class="ng-star-inserted">src/app/product-list/product-list.component.html</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-list/product-list.component.html">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;h2&gt;</span><span class="pln">Products</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;div</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgForOf" class="code-anchor"><span class="atn">ngFor</span></a><span class="pun">=</span><span class="atv">"let product of products"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/div&gt;</span></code>
+    </pre></aio-code></code-example>
+<p><code>*<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a></code> causes the <code>&lt;div&gt;</code> to be repeated for each product in the list. </p>
+<div class="alert is-helpful">
+<p><code>*<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a></code> is a "structural directive". Structural directives shape or reshape the DOM's structure, typically by adding, removing, and manipulating the elements to which they are attached. Any directive with an <code>*</code> is a structural directive.</p>
+</div>
+</li>
+<li>
+<p>To display the names of the products, use the interpolation syntax {{ }}. Interpolation renders a property's value as text. Inside the <code>&lt;div&gt;</code>, add an <code>&lt;h3&gt;</code> heading to display the interpolation of the product's name property: </p>
+<code-example path="getting-started/src/app/product-list/product-list.component.2.html" region="interpolation" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;h2&gt;Products&lt;/h2&gt;
+
+&lt;div *<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a>="let product of products"&gt;
+
+  &lt;h3&gt;
+      {{ product.name }}
+  &lt;/h3&gt;
+
+&lt;/div&gt;
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;h2&gt;</span><span class="pln">Products</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;div</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgForOf" class="code-anchor"><span class="atn">ngFor</span></a><span class="pun">=</span><span class="atv">"let product of products"</span><span class="tag">&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;h3&gt;</span><span class="pln">
+      {{ product.name }}
+  </span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/div&gt;</span></code>
+    </pre></aio-code></code-example>
+<p>The preview pane immediately updates to display the name of each product in the list. </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/template-syntax-product-names.png" alt="Product names added to list" width="259" height="271">
+</figure>
+</li>
+</ol>
+</li>
+<li>
+<p>In the final app, each product name will be a link to product details. Add the anchor now, and set the anchor's title to be the product's name by using the property binding [ ] syntax, as shown below: </p>
+<code-example path="getting-started/src/app/product-list/product-list.component.2.html" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;h2&gt;Products&lt;/h2&gt;
+
+&lt;div *<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a>="let product of products"&gt;
+
+  &lt;h3&gt;
+    &lt;<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a> [title]="product.name + ' details'"&gt;
+      {{ product.name }}
+    &lt;/<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a>&gt;
+  &lt;/h3&gt;
+
+&lt;/div&gt;
+
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;h2&gt;</span><span class="pln">Products</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;div</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgForOf" class="code-anchor"><span class="atn">ngFor</span></a><span class="pun">=</span><span class="atv">"let product of products"</span><span class="tag">&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;h3&gt;</span><span class="pln">
+    </span><span class="tag">&lt;</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="pln"> [</span><span class="atn">title</span><span class="pln">]</span><span class="pun">=</span><span class="atv">"product.name + ' details'"</span><span class="tag">&gt;</span><span class="pln">
+      {{ product.name }}
+    </span><span class="tag">&lt;/</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="tag">&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/div&gt;</span></code>
+    </pre></aio-code></code-example>
+<!-- 
+To do: Description and code don't match exactly. Do we want to just use product name as the anchor hover text to show a simple property or append "details" to show an expression? Also affects screen shot. 
+-->
+<p>In the preview pane, hover over the displayed product name to see the bound name property value. They are the same. Interpolation {{ }} lets you render the property value as text; property binding [ ] lets you use the property value in a template expression. </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/template-syntax-product-anchor.png" alt="Product name anchor text is product name property" width="259" height="271">
+</figure>
+</li>
+<li>
+<p>Add the product descriptions. On the paragraph tag, use an <code>*<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a></code> directive so that the paragraph element is only created if the current product has a description.</p>
+<code-example path="getting-started/src/app/product-list/product-list.component.3.html" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;h2&gt;Products&lt;/h2&gt;
+
+&lt;div *<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a>="let product of products"&gt;
+
+  &lt;h3&gt;
+    &lt;<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a> [title]="product.name + ' details'"&gt;
+      {{ product.name }}
+    &lt;/<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a>&gt;
+  &lt;/h3&gt;
+
+  &lt;p *<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a>="product.description"&gt;
+    Description: {{ product.description }}
+  &lt;/p&gt;
+
+&lt;/div&gt;
+
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;h2&gt;</span><span class="pln">Products</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;div</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgForOf" class="code-anchor"><span class="atn">ngFor</span></a><span class="pun">=</span><span class="atv">"let product of products"</span><span class="tag">&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;h3&gt;</span><span class="pln">
+    </span><span class="tag">&lt;</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="pln"> [</span><span class="atn">title</span><span class="pln">]</span><span class="pun">=</span><span class="atv">"product.name + ' details'"</span><span class="tag">&gt;</span><span class="pln">
+      {{ product.name }}
+    </span><span class="tag">&lt;/</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="tag">&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;p</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgIf" class="code-anchor"><span class="atn">ngIf</span></a><span class="pun">=</span><span class="atv">"product.description"</span><span class="tag">&gt;</span><span class="pln">
+    Description: {{ product.description }}
+  </span><span class="tag">&lt;/p&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/div&gt;</span></code>
+    </pre></aio-code></code-example>
+<p>The app now displays the name and description of each product in the list, as shown below. Notice that the final product does not have a description paragraph at all. Because the product's description property is empty, the paragraph element—including the word "Description"—is not created.  </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/template-syntax-product-description.png" alt="Product descriptions added to list" width="259" height="289">
+</figure>
+</li>
+<li>
+<p>Add a button so users can share a product with friends. Bind the button's <code>click</code> event to the <code>share()</code> event that we defined for you (in <code>product-list.component.ts</code>). Event binding is done by using ( ) around the event, as shown below: </p>
+<code-example path="getting-started/src/app/product-list/product-list.component.4.html" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;h2&gt;Products&lt;/h2&gt;
+
+&lt;div *<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a>="let product of products"&gt;
+
+  &lt;h3&gt;
+    &lt;<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a> [title]="product.name + ' details'"&gt;
+      {{ product.name }}
+    &lt;/<a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor">a</a>&gt;
+  &lt;/h3&gt;
+
+  &lt;p *<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a>="product.description"&gt;
+    Description: {{ product.description }}
+  &lt;/p&gt;
+
+  &lt;button (click)="share()"&gt;
+    Share
+  &lt;/button&gt;
+
+&lt;/div&gt;
+
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;h2&gt;</span><span class="pln">Products</span><span class="tag">&lt;/h2&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;div</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgForOf" class="code-anchor"><span class="atn">ngFor</span></a><span class="pun">=</span><span class="atv">"let product of products"</span><span class="tag">&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;h3&gt;</span><span class="pln">
+    </span><span class="tag">&lt;</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="pln"> [</span><span class="atn">title</span><span class="pln">]</span><span class="pun">=</span><span class="atv">"product.name + ' details'"</span><span class="tag">&gt;</span><span class="pln">
+      {{ product.name }}
+    </span><span class="tag">&lt;/</span><a href="https://angular.io/api/router/RouterLinkWithHref" class="code-anchor"><span class="tag">a</span></a><span class="tag">&gt;</span><span class="pln">
+  </span><span class="tag">&lt;/h3&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;p</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgIf" class="code-anchor"><span class="atn">ngIf</span></a><span class="pun">=</span><span class="atv">"product.description"</span><span class="tag">&gt;</span><span class="pln">
+    Description: {{ product.description }}
+  </span><span class="tag">&lt;/p&gt;</span><span class="pln">
+
+  </span><span class="tag">&lt;button</span><span class="pln"> (</span><span class="atn">click</span><span class="pln">)</span><span class="pun">=</span><span class="atv">"share()"</span><span class="tag">&gt;</span><span class="pln">
+    Share
+  </span><span class="tag">&lt;/button&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;/div&gt;</span></code>
+    </pre></aio-code></code-example>
+<p>Each product now has a "Share" button: </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/template-syntax-product-share-button.png" alt="Share button added for each product" width="259" height="376">
+</figure>
+<p>Test the "Share" button: </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/template-syntax-product-share-alert.png" alt="Alert box indicating product has been shared" width="330" height="104">
+</figure>
+</li>
+</ol>
+<p>The app now has a product list and sharing feature.
+In the process, you've learned to use five common features of Angular's template syntax: </p>
+<ul>
+<li><code>*<a href="https://angular.io/api/common/NgForOf" class="code-anchor">ngFor</a></code></li>
+<li><code>*<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a></code></li>
+<li>Interpolation <code>{{ }}</code></li>
+<li>Property binding <code>[ ]</code></li>
+<li>Event binding <code>( )</code></li>
+</ul>
+<div class="alert is-helpful">
+<p>Learn more: See the <a href="https://angular.io/guide/template-syntax" title="Template Syntax">Template Syntax guide</a> for information about the full capabilities of Angular's template syntax.</p>
+</div>
+<a id="components"></a>
+<h2 id="components">Components<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#components"><i class="material-icons">link</i></a></h2>
+<p><em>Components</em> define areas of responsibility in your UI that let you reuse these sets of UI functionality.
+You've already built one with the product list component. </p>
+<p>A component is comprised of three things: </p>
+<ul>
+<li><strong>A component class,</strong> which handles data and functionality. In the previous section, the product data and the <code>share()</code> method were defined for you in the component class. </li>
+<li><strong>An HTML template,</strong> which determines what is presented to the user. In the previous section, you modified the product list's HTML template to display the name, description, and a "Share" button for each product. </li>
+<li><strong>Component-specific styles</strong> that define the look and feel. The product list does not define any styles.  </li>
+</ul>
+<!-- 
+### Class definition
+
+Let's take a quick look a the product list component's class definition: 
+
+1. In the `product-list` directory, open `product-list.component.ts`. 
+
+1. Notice the `@Component` decorator. This provides metadata about the component, including its templates, styles, and a selector. 
+
+    * The `selector` is used to identify the component. The selector is the name you give the Angular component when it is rendered as an HTML element on the page. By convention, Angular component selectors begin with the prefix such as `app-`, followed by the component name. 
+
+    * The template and style filename also are provided here. By convention each of the component's parts is in a separate file, all in the same directory and with the same prefix. 
+
+1. The component definition also includes an exported class, which handles functionality for the component. This is where the product list data and `Share()` method are defined. 
+
+### Composition
+-->
+<p>An Angular application is composed of a tree of components, in which each Angular component has a specific purpose and responsibility. </p>
+<p>Currently, our app has three components: </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/app-components.png" alt="Online store with three components" width="324" height="527">
+</figure>
+<ul>
+<li><code>app-root</code> (orange box) is the application shell. This is the first component to load, and the parent of all other components. You can think of it as the base page. </li>
+<li><code>app-top-bar</code> (blue background) is the store name and checkout button.</li>
+<li><code>app-product-list</code> (purple box) is the product list that you modified in the previous section. </li>
+</ul>
+<p>In the next section, you'll expand the app's capabilities by adding a new component for a product alert. You'll add it as a child of the product list component. </p>
+<div class="alert is-helpful">
+<p>Learn more: See <a href="https://angular.io/guide/architecture-components" title="Architecture &gt; Introduction to Components">Introduction to Components</a> for more information about components and how they interact with templates.</p>
+</div>
+<a id="input"></a>
+<h2 id="input">Input<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#input"><i class="material-icons">link</i></a></h2>
+<p>Currently, the product list displays the name and description of each product.
+You might have noticed that the product list component also defines a <code>products</code> property that contains imported data for each product. (See the <code>products</code> array in <code>products.ts</code>.)</p>
+<p>We're going to create a new alert feature. The alert feature will take a product as an input. It will then check the product's price, and, if the price is greater than $700, it will display a "Notify Me" button that lets users sign up for notifications when the product goes on sale. </p>
+<ol>
+<li>
+<p>Create a new product alerts component. </p>
+<ol>
+<li>
+<p>Right click on the <code>app</code> folder and use the <code>Angular Generator</code> to generate a new component named <code>product-alerts</code>.</p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/generate-component.png" alt="StackBlitz command to generate component" width="407" height="368">
+</figure>
+<p>The generator creates starter files for all three parts of the component: </p>
+<ul>
+<li><code>product-alerts.component.ts</code></li>
+<li><code>product-alerts.component.html</code></li>
+<li><code>product-alerts.component.css</code></li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<p>Open <code>product-alerts.component.ts</code>.</p>
+<code-example header="src/app/product-alerts/product-alerts.component.ts" path="getting-started/src/app/product-alerts/product-alerts.component.1.ts" region="as-generated" ng-version="8.1.0-next.1"><div style="display: none">
+import { <a href="https://angular.io/api/core/Component" class="code-anchor">Component</a>, <a href="https://angular.io/api/core/OnInit" class="code-anchor">OnInit</a> } from '@angular/core';
+
+@<a href="https://angular.io/api/core/Component" class="code-anchor">Component</a>({
+  selector: 'app-product-alerts',
+  templateUrl: './product-alerts.component.html',
+  <a href="https://angular.io/api/core/Component#styleUrls" class="code-anchor">styleUrls</a>: ['./product-alerts.component.css']
+})
+export class ProductAlertsComponent implements <a href="https://angular.io/api/core/OnInit" class="code-anchor">OnInit</a> {
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+</div><!----><header class="ng-star-inserted">src/app/product-alerts/product-alerts.component.ts</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-alerts/product-alerts.component.ts">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Component" class="code-anchor"><span class="typ">Component</span></a><span class="pun">,</span><span class="pln"> </span><a href="https://angular.io/api/core/OnInit" class="code-anchor"><span class="typ">OnInit</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span><span class="pln">
+
+</span><span class="lit">@</span><a href="https://angular.io/api/core/Component" class="code-anchor"><span class="lit">Component</span></a><span class="pun">({</span><span class="pln">
+  selector</span><span class="pun">:</span><span class="pln"> </span><span class="str">'app-product-alerts'</span><span class="pun">,</span><span class="pln">
+  templateUrl</span><span class="pun">:</span><span class="pln"> </span><span class="str">'./product-alerts.component.html'</span><span class="pun">,</span><span class="pln">
+  </span><a href="https://angular.io/api/core/Component#styleUrls" class="code-anchor"><span class="pln">styleUrls</span></a><span class="pun">:</span><span class="pln"> </span><span class="pun">[</span><span class="str">'./product-alerts.component.css'</span><span class="pun">]</span><span class="pln">
+</span><span class="pun">})</span><span class="pln">
+</span><span class="kwd">export</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductAlertsComponent</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><a href="https://angular.io/api/core/OnInit" class="code-anchor"><span class="typ">OnInit</span></a><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="kwd">constructor</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+  ngOnInit</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></code>
+    </pre></aio-code></code-example>
+<ol>
+<li>
+<p>Notice the <code>@<a href="https://angular.io/api/core/Component" class="code-anchor">Component</a></code> decorator. This indicates that the following class is a component. It provides metadata about the component, including its templates, styles, and a selector. </p>
+<ul>
+<li>
+<p>The <code>selector</code> is used to identify the component. The selector is the name you give the Angular component when it is rendered as an HTML element on the page. By convention, Angular component selectors begin with the prefix <code>app-</code>, followed by the component name. </p>
+</li>
+<li>
+<p>The template and style filenames. These reference the other two files generated for you. </p>
+</li>
+</ul>
+</li>
+<li>
+<p>The component definition also includes an exported class (<code>ProductAlertsComponent</code>), which handles functionality for the component. </p>
+</li>
+</ol>
+</li>
+<li>
+<p>Set up the new product alerts component to receive a product as input:</p>
+<ol>
+<li>
+<p>Import <code><a href="https://angular.io/api/core/Input" class="code-anchor">Input</a></code> from <code>@angular/core</code>.</p>
+<code-example path="getting-started/src/app/product-alerts/product-alerts.component.1.ts" region="imports" ng-version="8.1.0-next.1"><div style="display: none">
+import { <a href="https://angular.io/api/core/Component" class="code-anchor">Component</a>, <a href="https://angular.io/api/core/OnInit" class="code-anchor">OnInit</a> } from '@angular/core';
+import { <a href="https://angular.io/api/core/Input" class="code-anchor">Input</a> } from '@angular/core';
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Component" class="code-anchor"><span class="typ">Component</span></a><span class="pun">,</span><span class="pln"> </span><a href="https://angular.io/api/core/OnInit" class="code-anchor"><span class="typ">OnInit</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Input" class="code-anchor"><span class="typ">Input</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>In the <code>ProductAlertsComponent</code> class definition, define a property named <code>product</code> with an <code>@<a href="https://angular.io/api/core/Input" class="code-anchor">Input</a></code> decorator. The <code>@<a href="https://angular.io/api/core/Input" class="code-anchor">Input</a></code> decorator indicates that the property value will be passed in from the component's parent (in this case, the product list component).</p>
+<code-example path="getting-started/src/app/product-alerts/product-alerts.component.1.ts" region="input-decorator" ng-version="8.1.0-next.1"><div style="display: none">
+export class ProductAlertsComponent implements <a href="https://angular.io/api/core/OnInit" class="code-anchor">OnInit</a> {
+  @<a href="https://angular.io/api/core/Input" class="code-anchor">Input</a>() product;
+  constructor() { }
+
+  ngOnInit() {
+  }
+
+}
+
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">export</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductAlertsComponent</span><span class="pln"> </span><span class="kwd">implements</span><span class="pln"> </span><a href="https://angular.io/api/core/OnInit" class="code-anchor"><span class="typ">OnInit</span></a><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@</span><a href="https://angular.io/api/core/Input" class="code-anchor"><span class="lit">Input</span></a><span class="pun">()</span><span class="pln"> product</span><span class="pun">;</span><span class="pln">
+  </span><span class="kwd">constructor</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+
+  ngOnInit</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+</span><span class="pun">}</span></code>
+    </pre></aio-code></code-example>
+</li>
+</ol>
+</li>
+<li>
+<p>Define the view for the new product alert component. </p>
+<p>Open the <code>product-alerts.component.html</code> template and replace the placeholder paragraph with a "Notify Me" button that appears if the product price is over $700. </p>
+<code-example header="src/app/product-alerts/product-alerts.component.html" path="getting-started/src/app/product-alerts/product-alerts.component.1.html" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;p *<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a>="product.price &gt; 700"&gt;
+  &lt;button&gt;Notify Me&lt;/button&gt;
+&lt;/p&gt;
+
+
+</div><!----><header class="ng-star-inserted">src/app/product-alerts/product-alerts.component.html</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-alerts/product-alerts.component.html">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;p</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgIf" class="code-anchor"><span class="atn">ngIf</span></a><span class="pun">=</span><span class="atv">"product.price &gt;</span><span class="pln"> 700"&gt;
+  </span><span class="tag">&lt;button&gt;</span><span class="pln">Notify Me</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+</span><span class="tag">&lt;/p&gt;</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>Display the new product alert component as part of (a child of) the product list. </p>
+<ol>
+<li>
+<p>Open <code>product-list.component.html</code>.</p>
+</li>
+<li>
+<p>To include the new component, use its selector (<code>app-product-alert</code>) as you would an HTML element. </p>
+</li>
+<li>
+<p>Pass the current product as input to the component using property binding. </p>
+<code-example header="src/app/product-list/product-list.component.html" path="getting-started/src/app/product-list/product-list.component.5.html" region="app-product-alerts" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;button (click)="share()"&gt;
+  Share
+&lt;/button&gt;
+
+&lt;app-product-alerts
+  [product]="product"&gt;
+&lt;/app-product-alerts&gt;
+
+</div><!----><header class="ng-star-inserted">src/app/product-list/product-list.component.html</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-list/product-list.component.html">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;button</span><span class="pln"> (</span><span class="atn">click</span><span class="pln">)</span><span class="pun">=</span><span class="atv">"share()"</span><span class="tag">&gt;</span><span class="pln">
+  Share
+</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;app-product-alerts</span><span class="pln">
+  [</span><span class="atn">product</span><span class="pln">]</span><span class="pun">=</span><span class="atv">"product"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/app-product-alerts&gt;</span></code>
+    </pre></aio-code></code-example>
+</li>
+</ol>
+</li>
+</ol>
+<p>The new product alert component takes a product as input from the product list. With that input, it shows or hides the "Notify Me" button, based on the price of the product. The Phone XL price is over $700, so the "Notify Me" button appears on that product. </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/product-alert-button.png" alt="Product alert button added to products over $700" width="259" height="406">
+</figure>
+<div class="alert is-helpful">
+<p>Learn more: See <a href="https://angular.io/guide/component-interaction" title="Components &amp; Templates &gt; Component Interaction">Component Interaction</a> for more information about passing data from a parent to child component, intercepting and acting upon a value from the parent, and detecting and acting on changes to input property values.</p>
+</div>
+<a id="output"></a>
+<h2 id="output">Output<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#output"><i class="material-icons">link</i></a></h2>
+<p>The "Notify Me" button doesn't do anything yet. In this section, you'll set up the product alert component so that it emits an event up to the product list component when the user clicks "Notify Me". You'll define the notification behavior in the product list component. </p>
+<ol>
+<li>
+<p>Open <code>product-alerts.component.ts</code>.</p>
+</li>
+<li>
+<p>Import <code><a href="https://angular.io/api/core/Output" class="code-anchor">Output</a></code> and <code><a href="https://angular.io/api/core/EventEmitter" class="code-anchor">EventEmitter</a></code> from <code>@angular/core</code>: </p>
+<code-example header="src/app/product-alerts/product-alerts.component.ts" path="getting-started/src/app/product-alerts/product-alerts.component.ts" region="imports" ng-version="8.1.0-next.1"><div style="display: none">
+import { <a href="https://angular.io/api/core/Component" class="code-anchor">Component</a> } from '@angular/core';
+import { <a href="https://angular.io/api/core/Input" class="code-anchor">Input</a> } from '@angular/core';
+import { <a href="https://angular.io/api/core/Output" class="code-anchor">Output</a>, <a href="https://angular.io/api/core/EventEmitter" class="code-anchor">EventEmitter</a> } from '@angular/core';
+
+</div><!----><header class="ng-star-inserted">src/app/product-alerts/product-alerts.component.ts</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-alerts/product-alerts.component.ts">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Component" class="code-anchor"><span class="typ">Component</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Input" class="code-anchor"><span class="typ">Input</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">import</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><a href="https://angular.io/api/core/Output" class="code-anchor"><span class="typ">Output</span></a><span class="pun">,</span><span class="pln"> </span><a href="https://angular.io/api/core/EventEmitter" class="code-anchor"><span class="typ">EventEmitter</span></a><span class="pln"> </span><span class="pun">}</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="str">'@angular/core'</span><span class="pun">;</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>In the component class, define a property named <code>notify</code> with an <code>@<a href="https://angular.io/api/core/Output" class="code-anchor">Output</a></code> decorator and an instance of event emitter. This makes it possible for the product alert component to emit an event when the value of the notify property changes.</p>
+<code-example path="getting-started/src/app/product-alerts/product-alerts.component.ts" region="input-output" ng-version="8.1.0-next.1"><div style="display: none">
+export class ProductAlertsComponent {
+  @<a href="https://angular.io/api/core/Input" class="code-anchor">Input</a>() product;
+  @<a href="https://angular.io/api/core/Output" class="code-anchor">Output</a>() notify = new <a href="https://angular.io/api/core/EventEmitter" class="code-anchor">EventEmitter</a>();
+}
+
+
+</div><!----><aio-code><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">export</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductAlertsComponent</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  </span><span class="lit">@</span><a href="https://angular.io/api/core/Input" class="code-anchor"><span class="lit">Input</span></a><span class="pun">()</span><span class="pln"> product</span><span class="pun">;</span><span class="pln">
+  </span><span class="lit">@</span><a href="https://angular.io/api/core/Output" class="code-anchor"><span class="lit">Output</span></a><span class="pun">()</span><span class="pln"> notify </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><a href="https://angular.io/api/core/EventEmitter" class="code-anchor"><span class="typ">EventEmitter</span></a><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>In the product alert template (<code>product-alerts.component.html</code>), update the "Notify Me" button with an event binding to call the <code>notify.emit()</code> method.</p>
+<code-example header="src/app/product-alerts/product-alerts.component.html" path="getting-started/src/app/product-alerts/product-alerts.component.html" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;p *<a href="https://angular.io/api/common/NgIf" class="code-anchor">ngIf</a>="product.price &gt; 700"&gt;
+  &lt;button (click)="notify.emit()"&gt;Notify Me&lt;/button&gt;
+&lt;/p&gt;
+
+
+</div><!----><header class="ng-star-inserted">src/app/product-alerts/product-alerts.component.html</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-alerts/product-alerts.component.html">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;p</span><span class="pln"> *</span><a href="https://angular.io/api/common/NgIf" class="code-anchor"><span class="atn">ngIf</span></a><span class="pun">=</span><span class="atv">"product.price &gt;</span><span class="pln"> 700"&gt;
+  </span><span class="tag">&lt;button</span><span class="pln"> (</span><span class="atn">click</span><span class="pln">)</span><span class="pun">=</span><span class="atv">"notify.emit()"</span><span class="tag">&gt;</span><span class="pln">Notify Me</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+</span><span class="tag">&lt;/p&gt;</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>Next, define the behavior that should happen when the button is clicked. Recall that it's the parent (product list component)—not the product alerts component—that's going to take the action. In the <code>product-list.component.ts</code> file, define an <code>onNotify()</code> method, similar to the <code>share()</code> method: </p>
+<code-example header="src/app/product-list/product-list.component.ts" path="getting-started/src/app/product-list/product-list.component.ts" region="on-notify" ng-version="8.1.0-next.1"><div style="display: none">
+export class ProductListComponent {
+  products = products;
+
+  share() {
+    window.alert('The product has been shared!');
+  }
+
+  onNotify() {
+    window.alert('You will be notified when the product goes on sale');
+  }
+}
+
+
+</div><!----><header class="ng-star-inserted">src/app/product-list/product-list.component.ts</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-list/product-list.component.ts">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="kwd">export</span><span class="pln"> </span><span class="kwd">class</span><span class="pln"> </span><span class="typ">ProductListComponent</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+  products </span><span class="pun">=</span><span class="pln"> products</span><span class="pun">;</span><span class="pln">
+
+  share</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    window</span><span class="pun">.</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'The product has been shared!'</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+
+  onNotify</span><span class="pun">()</span><span class="pln"> </span><span class="pun">{</span><span class="pln">
+    window</span><span class="pun">.</span><span class="pln">alert</span><span class="pun">(</span><span class="str">'You will be notified when the product goes on sale'</span><span class="pun">);</span><span class="pln">
+  </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>Finally, update the product list component to receive output from the product alerts component. </p>
+<p>In <code>product-list.component.html</code>, bind the <code>app-product-alerts</code> component (which is what displays the "Notify Me" button) to the <code>onNotify()</code> method of the product list component. </p>
+<code-example header="src/app/product-list/product-list.component.html" path="getting-started/src/app/product-list/product-list.component.6.html" region="on-notify" ng-version="8.1.0-next.1"><div style="display: none">
+&lt;button (click)="share()"&gt;
+  Share
+&lt;/button&gt;
+
+&lt;app-product-alerts
+  [product]="product" 
+  (notify)="onNotify()"&gt;
+&lt;/app-product-alerts&gt;
+
+</div><!----><header class="ng-star-inserted">src/app/product-list/product-list.component.html</header><aio-code class="headed-code"><pre class="prettyprint lang-">      <!----><button class="material-icons copy-button no-print ng-star-inserted" title="Copy code snippet" aria-label="Copy code snippet from src/app/product-list/product-list.component.html">
+        <span aria-hidden="true">content_copy</span>
+      </button>
+      <code class="animated fadeIn"><span class="tag">&lt;button</span><span class="pln"> (</span><span class="atn">click</span><span class="pln">)</span><span class="pun">=</span><span class="atv">"share()"</span><span class="tag">&gt;</span><span class="pln">
+  Share
+</span><span class="tag">&lt;/button&gt;</span><span class="pln">
+
+</span><span class="tag">&lt;app-product-alerts</span><span class="pln">
+  [</span><span class="atn">product</span><span class="pln">]</span><span class="pun">=</span><span class="atv">"product"</span><span class="pln"> 
+  (</span><span class="atn">notify</span><span class="pln">)</span><span class="pun">=</span><span class="atv">"onNotify()"</span><span class="tag">&gt;</span><span class="pln">
+</span><span class="tag">&lt;/app-product-alerts&gt;</span></code>
+    </pre></aio-code></code-example>
+</li>
+<li>
+<p>Try out the "Notify Me" button: </p>
+<figure>
+  <img src="./Angular - Getting Started with Angular_ Your First App_files/product-alert-notification.png" alt="Product alert notification confirmation dialog" width="329" height="104">
+</figure>
+</li>
+</ol>
+<div class="alert is-helpful">
+<p>Learn more: See <a href="https://angular.io/guide/component-interaction" title="Components &amp; Templates &gt; Component Interaction">Component Interaction</a> for more information about listening for events from child components, reading child properties or invoking child methods, and using a service for bi-directional communication within the family.</p>
+</div>
+<a id="next-steps"></a>
+<h2 id="next-steps">Next steps<a title="Link to this heading" class="header-link" aria-hidden="true" href="https://angular.io/start#next-steps"><i class="material-icons">link</i></a></h2>
+<p>Congratulations! You've completed your first Angular app!</p>
+<p>You have a basic online store catalog, with a product list, "Share" button, and "Notify Me" button.
+You've learned about the foundation of Angular: components and template syntax.
+You've also learned how the component class and template interact, and how components communicate with each other. </p>
+<p>To continue exploring Angular, choose either of the following options:</p>
+<ul>
+<li><a href="https://angular.io/start/routing" title="Getting Started: Routing">Continue to the "Routing" section</a> to create a product details page that can be accessed by clicking a product name and that has its own URL pattern. </li>
+<li><a href="https://angular.io/start/deployment" title="Getting Started: Deployment">Skip ahead to the "Deployment" section</a> to move to local development, or deploy your app to Firebase or your own server.</li>
+</ul>
+
+</div>
+
+<!-- links to this doc:
+ - docs
+ - features
+ - guide/attribute-directives
+ - guide/setup-local
+ - index
+ - start/deployment
+ - start/routing
+ - tutorial
+-->
+<!-- links from this doc:
+ - api/common/NgForOf
+ - api/common/NgIf
+ - api/core/Component
+ - api/core/Component#styleUrls
+ - api/core/EventEmitter
+ - api/core/Input
+ - api/core/OnInit
+ - api/core/Output
+ - api/router/RouterLinkWithHref
+ - cli
+ - guide/architecture-components
+ - guide/component-interaction
+ - guide/glossary#command-line-interface-cli
+ - guide/template-syntax
+ - start#click-here-to-create-a-new-project-in-stackblitz
+ - start#components
+ - start#create-a-new-project
+ - start#getting-started-with-angular-your-first-app
+ - start#input
+ - start#next-steps
+ - start#output
+ - start#template-syntax
+ - start/deployment
+ - start/routing
+ - http://www.udemy.com
+ - https://developer.mozilla.org/en-US/docs/Learn/HTML
+ - https://developer.mozilla.org/en-US/docs/Web/JavaScript
+ - https://github.com/angular/angular/edit/master/aio/content/start/index.md?message=docs%3A%20describe%20your%20change...
+ - https://stackblitz.com/
+ - https://www.codecademy.com/
+ - https://www.typescriptlang.org/docs/home.html
+--></div></aio-doc-viewer><!----></main></mat-sidenav-content></mat-sidenav-container><!----><div class="toc-container no-print ng-star-inserted" style="max-height: 5258px;"><aio-lazy-ce selector="aio-toc"><aio-toc ng-version="8.1.0-next.1"><!----><div class="toc-inner no-print collapsed ng-star-inserted"><!----><!----><ul class="toc-list"><!----><!----><!----><li title="Getting Started with Angular: Your First Applink" class="h1 ng-star-inserted"><a href="https://angular.io/start#getting-started-with-angular-your-first-app">Getting Started with Angular: Your First App</a></li><!----><!----><!----><li title="Create a new projectlink" class="h2 ng-star-inserted"><a href="https://angular.io/start#create-a-new-project">Create a new project</a></li><!----><!----><!----><li title="Template syntaxlink" class="h2 ng-star-inserted"><a href="https://angular.io/start#template-syntax">Template syntax</a></li><!----><!----><!----><li title="Componentslink" class="h2 ng-star-inserted"><a href="https://angular.io/start#components">Components</a></li><!----><!----><!----><li title="Inputlink" class="h2 ng-star-inserted active"><a href="https://angular.io/start#input">Input</a></li><!----><!----><!----><li title="Outputlink" class="h2 ng-star-inserted"><a href="https://angular.io/start#output">Output</a></li><!----><!----><!----><li title="Next stepslink" class="h2 ng-star-inserted"><a href="https://angular.io/start#next-steps">Next steps</a></li><!----></ul><!----></div></aio-toc></aio-lazy-ce></div><footer class="no-print"><aio-footer><div class="grid-fluid"><!----><div class="footer-block ng-star-inserted"><h3>Resources</h3><ul><!----><li class="ng-star-inserted"><a class="link" href="https://angular.io/about" title="Angular contributors.">About</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.io/resources" title="Angular tools, training, and blogs from around the web.">Resource Listing</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.io/presskit" title="Press contacts, logos, and branding.">Press Kit</a></li><li class="ng-star-inserted"><a class="link" href="https://blog.angular.io/" title="Angular Blog">Blog</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.io/analytics" title="Angular Usage Analytics">Usage Analytics</a></li></ul></div><div class="footer-block ng-star-inserted"><h3>Help</h3><ul><!----><li class="ng-star-inserted"><a class="link" href="https://stackoverflow.com/questions/tagged/angular" title="Stack Overflow: where the community answers your technical Angular questions.">Stack Overflow</a></li><li class="ng-star-inserted"><a class="link" href="https://gitter.im/angular/angular" title="Chat about Angular with other birds of a feather.">Gitter</a></li><li class="ng-star-inserted"><a class="link" href="https://github.com/angular/angular/issues" title="Post issues and suggestions on github.">Report Issues</a></li><li class="ng-star-inserted"><a class="link" href="https://github.com/angular/code-of-conduct/blob/master/CODE_OF_CONDUCT.md" title="Treating each other with respect.">Code of Conduct</a></li></ul></div><div class="footer-block ng-star-inserted"><h3>Community</h3><ul><!----><li class="ng-star-inserted"><a class="link" href="https://angular.io/events" title="Angular events around the world.">Events</a></li><li class="ng-star-inserted"><a class="link" href="http://www.meetup.com/topics/angularjs/" title="Attend a meetup and learn from fellow developers.">Meetups</a></li><li class="ng-star-inserted"><a class="link" href="https://twitter.com/angular" title="Twitter">Twitter</a></li><li class="ng-star-inserted"><a class="link" href="https://github.com/angular/angular" title="GitHub">GitHub</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.io/contribute" title="Contribute to Angular">Contribute</a></li></ul></div><div class="footer-block ng-star-inserted"><h3>Languages</h3><ul><!----><li class="ng-star-inserted"><a class="link" href="https://angular.cn/" title="简体中文版">简体中文版</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.tw/" title="正體中文版">正體中文版</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.jp/" title="日本語版">日本語版</a></li><li class="ng-star-inserted"><a class="link" href="https://angular.kr/" title="한국어">한국어</a></li></ul></div></div><p> Super-powered by Google ©2010-2019. Code licensed under an <a href="https://angular.io/license" title="License text">MIT-style License</a>. Documentation licensed under <a href="http://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>.
+</p><p> Version 8.2.1-local+sha.dde0a3294.
+</p></aio-footer></footer><!----><div class="cdk-visually-hidden ng-star-inserted"><mat-icon class="mat-icon notranslate material-icons mat-icon-no-color" role="img" aria-hidden="true">&nbsp;</mat-icon></div></aio-shell>
+
+  <noscript>
+    <div class="background-sky hero"></div>
+    <section id="intro" style="text-shadow: 1px 1px #1976d2;">
+      <div class="hero-logo">
+        <img src="assets/images/logos/angular/angular.svg" width="250" height="250" alt="Angular">
+      </div>
+      <div class="homepage-container">
+        <div class="hero-headline">One framework.<br>Mobile &amp; desktop.</div>
+      </div>
+    </section>
+    <h2 style="color: red; margin-top: 40px; position: relative; text-align: center; text-shadow: 1px 1px #fafafa;">
+      <b><i>This website requires JavaScript.</i></b>
+    </h2>
+  </noscript>
+<script src="./Angular - Getting Started with Angular_ Your First App_files/runtime-es2015.8faf21778cfb6d187b30.js.descarga" type="module"></script><script src="./Angular - Getting Started with Angular_ Your First App_files/polyfills-es2015.c45d89a67228e0308422.js.descarga" type="module"></script><script src="./Angular - Getting Started with Angular_ Your First App_files/runtime-es5.d6957617b74d7808353e.js.descarga" nomodule=""></script><script src="./Angular - Getting Started with Angular_ Your First App_files/polyfills-es5.39ed02ee49092f84045d.js.descarga" nomodule=""></script><script src="./Angular - Getting Started with Angular_ Your First App_files/main-es2015.aa2b9ac65da38cf839e2.js.descarga" type="module"></script><script src="./Angular - Getting Started with Angular_ Your First App_files/main-es5.0fda75176c0319f3169a.js.descarga" nomodule=""></script>
+
+
+<div class="cdk-live-announcer-element cdk-visually-hidden" aria-atomic="true" aria-live="polite"></div></body></html>
