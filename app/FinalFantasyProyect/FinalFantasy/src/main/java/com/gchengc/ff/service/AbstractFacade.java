@@ -1,12 +1,15 @@
 package com.gchengc.ff.service;
 
-import javax.annotation.Resource;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.transaction.UserTransaction;
-import java.util.List;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Root;
+import javax.persistence.metamodel.IdentifiableType;
+import javax.persistence.metamodel.Metamodel;
+import javax.persistence.metamodel.SingularAttribute;
+
 
 public abstract class AbstractFacade<T> {
 
@@ -26,67 +29,117 @@ public abstract class AbstractFacade<T> {
         this.entityClass = entityClass;
     }
 
-    public String create(T entity) {
-        System.out.println("Estoy en service");
+    public Object create(T entity) throws Exception {
         try {
+            System.out.println("Entro en Servicio");
             if (entity != null) {
-                System.out.println("Creando conexion");
+                System.out.println("Entity no es vacio");
                 em = getEntityManager();
-                //System.out.println("Creando transaccion");
+                System.out.println("Creanda Conexion");
                 // em.getTransaction().begin();
-                System.out.println("insertando data");
                 em.persist(entity);
-                System.out.println("joinTransacction");
+                System.out.println("persiste");
                 em.joinTransaction();
-                //System.out.println("Commit");
+                System.out.println("join transaccion");
                 //em.getTransaction().commit();
-                System.out.println("ok");
             }
-            System.out.println("respuesta");
-            return "SUCCESS";
+
+            System.out.println(em.isJoinedToTransaction() ? "contiene" : "no contiene");
+
+            return em.isJoinedToTransaction();
         } catch (Exception e) {
-            System.out.println("Error: " + e.getMessage());
-            return "ERROR: " + e.getMessage();
+            throw new Exception(e);
         } finally {
             if (em != null) em.close();
         }
     }
 
-    public List<T> findAll() {
+    /*public List<T> findAll() {
         em = getEntityManager();
         CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return em.createQuery(cq).getResultList();
-    }
+    }*/
 
-    public T find(Object id) {
-        System.out.println("Creando conexion");
-        em = getEntityManager();
-        return em.find(entityClass, id);
-    }
-
-    public String edit(T entity) {
+    public Object findAll() throws Exception {
         try {
             em = getEntityManager();
-            em.merge(entity);
-            em.joinTransaction();
-            return "SUCCESS";
+            CriteriaQuery<T> cq = em.getCriteriaBuilder().createQuery(entityClass);
+            //https://stackoverflow.com/questions/16909236/retrieve-primary-key-column-definition-of-a-generic-entity-in-jpa
+            //Encontre esta solucion aqui a la problematica de buscar por Primary Key indistintamente del Entity trabajdo
+
+            Root<T> root = cq.from(entityClass);
+            System.out.println("Root: " + root.toString());
+            //System.out.println("prueba: " + em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entityClass));
+            cq.select(root);
+  /*          System.out.println("CQ.select ");
+            SingularAttribute idAttibute = getIdAttribute(em, entityClass);
+            System.out.println("Atributo: " + idAttibute);
+            Path<?> pathToId = root.get(idAttibute);
+            System.out.println("Path: " + pathToId);
+            cq.orderBy(em.getCriteriaBuilder().desc(pathToId));*/
+            //-------------------------------------------------------------------------------------------------------------
+            return em.createQuery(cq).getResultList();
+
         } catch (Exception e) {
-            return "ERROR: " + e.getMessage();
+            throw new Exception(e);
         } finally {
             if (em != null) em.close();
         }
     }
 
-    public String remove(T entity) {
+    public T find(Object id) throws Exception {
         try {
-            EntityManager em = getEntityManager();
+            em = getEntityManager();
+            return em.find(entityClass, id);
+        } catch (Exception e) {
+            throw new Exception(e);
+        } finally {
+            if (em != null) em.close();
+        }
+    }
 
+    public Object edit(T entity) throws Exception {
+        try {
+            em = getEntityManager();
+            em.merge(entity);
+            em.joinTransaction();
+            return em.isJoinedToTransaction();
+        } catch (Exception e) {
+            throw new Exception(e);
+        } finally {
+            if (em != null) em.close();
+        }
+    }
+
+    public Object remove(T entity) throws Exception {
+        try {
+            em = getEntityManager();
             em.remove(em.merge(entity));
             em.joinTransaction();
-            return "SUCCESS";
+            return em.isJoinedToTransaction();
         } catch (Exception e) {
-            return "ERROR: " + e.getMessage();
+            throw new Exception(e);
+        } finally {
+            if (em != null) em.close();
+        }
+    }
+
+    //***********************************************************************************************
+    private <T> SingularAttribute<? super T, ?> getIdAttribute(EntityManager em,
+                                                               Class<T> clazz) {
+        try {
+            System.out.println("Metamodel: ");
+            Metamodel m = em.getMetamodel();
+            IdentifiableType<T> of = (IdentifiableType<T>) m.managedType(clazz);
+            System.out.println("of: " + of.getIdType().getJavaType());
+            System.out.println("of: " + of.getId(of.getIdType().getJavaType()));
+            return of.getId(of.getIdType().getJavaType());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            System.out.println("Error2: " + e);
+
+            return null;
         }
     }
 }
