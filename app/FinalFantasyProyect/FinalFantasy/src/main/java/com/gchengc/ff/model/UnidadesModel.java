@@ -3,8 +3,11 @@ package com.gchengc.ff.model;
 
 import org.eclipse.persistence.annotations.PrimaryKey;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 
 @Entity
 @Table(name = "TBL_UNIDADES")
@@ -27,6 +30,11 @@ public class UnidadesModel {
     @Column(name = "MAX_STARTS")
     private int maxStarts;
 
+
+    public UnidadesModel() {
+        super();
+    }
+
     public long getId() {
         return id;
     }
@@ -35,9 +43,7 @@ public class UnidadesModel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     public void setName(String name) {
         this.name = name;
@@ -84,5 +90,16 @@ public class UnidadesModel {
     }
 
 
+ /*   @Override
+    public int hashCode() {
+        return id.hashCode();
+    }
 
+    @Override
+    public boolean equals(Object obj) {
+        UnidadesModel nueva = (UnidadesModel) obj;
+        return nueva.getId().equals(this.id());
+
+
+    }*/
 }

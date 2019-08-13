@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Root;
 import javax.persistence.metamodel.IdentifiableType;
 import javax.persistence.metamodel.Metamodel;
@@ -31,97 +30,98 @@ public abstract class AbstractFacade<T> {
 
     public Object create(T entity) throws Exception {
         try {
-            System.out.println("Entro en Servicio");
             if (entity != null) {
-                System.out.println("Entity no es vacio");
                 em = getEntityManager();
-                System.out.println("Creanda Conexion");
-                // em.getTransaction().begin();
-                em.persist(entity);
-                System.out.println("persiste");
-                em.joinTransaction();
-                System.out.println("join transaccion");
-                //em.getTransaction().commit();
+
+                if (em.isOpen())
+                    em.persist(entity);
+
             }
-
-            System.out.println(em.isJoinedToTransaction() ? "contiene" : "no contiene");
-
-            return em.isJoinedToTransaction();
+            em.flush();
+            return em.contains(entity);
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
-            if (em != null) em.close();
+            em.clear();
+            if (em != null && em.isOpen()) em.close();
         }
     }
-
-    /*public List<T> findAll() {
-        em = getEntityManager();
-        CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-        cq.select(cq.from(entityClass));
-        return em.createQuery(cq).getResultList();
-    }*/
 
     public Object findAll() throws Exception {
         try {
             em = getEntityManager();
-            CriteriaQuery<T> cq = em.getCriteriaBuilder().createQuery(entityClass);
-            //https://stackoverflow.com/questions/16909236/retrieve-primary-key-column-definition-of-a-generic-entity-in-jpa
-            //Encontre esta solucion aqui a la problematica de buscar por Primary Key indistintamente del Entity trabajdo
+            if (em.isOpen()) {
+                CriteriaQuery<T> cq = em.getCriteriaBuilder().createQuery(entityClass);
+                //https://stackoverflow.com/questions/16909236/retrieve-primary-key-column-definition-of-a-generic-entity-in-jpa
+                //Encontre esta solucion aqui a la problematica de buscar por Primary Key indistintamente del Entity trabajdo
 
-            Root<T> root = cq.from(entityClass);
-            System.out.println("Root: " + root.toString());
-            //System.out.println("prueba: " + em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entityClass));
-            cq.select(root);
+                Root<T> root = cq.from(entityClass);
+                System.out.println("Root: " + root.toString());
+                //System.out.println("prueba: " + em.getEntityManagerFactory().getPersistenceUnitUtil().getIdentifier(entityClass));
+                cq.select(root);
   /*          System.out.println("CQ.select ");
             SingularAttribute idAttibute = getIdAttribute(em, entityClass);
             System.out.println("Atributo: " + idAttibute);
             Path<?> pathToId = root.get(idAttibute);
             System.out.println("Path: " + pathToId);
             cq.orderBy(em.getCriteriaBuilder().desc(pathToId));*/
-            //-------------------------------------------------------------------------------------------------------------
-            return em.createQuery(cq).getResultList();
-
+                //-------------------------------------------------------------------------------------------------------------
+                return em.createQuery(cq).getResultList();
+            } else
+                return null;
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
-            if (em != null) em.close();
+            em.clear();
+            if (em != null && em.isOpen()) em.close();
         }
     }
 
     public T find(Object id) throws Exception {
         try {
             em = getEntityManager();
-            return em.find(entityClass, id);
+            if (em.isOpen())
+                return em.find(entityClass, id);
+            else
+                return null;
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
-            if (em != null) em.close();
+            em.clear();
+            if (em != null && em.isOpen()) em.close();
         }
     }
 
     public Object edit(T entity) throws Exception {
         try {
             em = getEntityManager();
-            em.merge(entity);
-            em.joinTransaction();
-            return em.isJoinedToTransaction();
+
+            if (em.isOpen())
+                em.merge(entity);
+
+            em.flush();
+
+            return em.contains(entity);
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
-            if (em != null) em.close();
+            em.clear();
+            if (em != null && em.isOpen()) em.close();
         }
     }
 
     public Object remove(T entity) throws Exception {
         try {
             em = getEntityManager();
-            em.remove(em.merge(entity));
-            em.joinTransaction();
-            return em.isJoinedToTransaction();
+            if (em.isOpen())
+                em.remove(em.merge(entity));
+            em.flush();
+            return em.contains(entity);
         } catch (Exception e) {
             throw new Exception(e);
         } finally {
-            if (em != null) em.close();
+            em.clear();
+            if (em != null && em.isOpen()) em.close();
         }
     }
 
