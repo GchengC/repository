@@ -1,9 +1,23 @@
+<h3>Mis Unidades</h3>
+    <app-units-table #unitsTable></app-units-table>
+
+<ul *ngFor="let unit of unitsService.units">
+    <li>
+        {{unit.name}}
+    </li>
+</ul>
+<br>
+<br>
+<br>
+<br>
+<br>
+<!---
 <h2>Mis Unidades</h2>
 <div class="row 12">
     <div class="col s6">
         <div class="card">
             <div class="card-content">
-                <form #unitForm="ngForm" (ngSubmit)="addUnit(unitForm)">
+                <form #unitForm="ngForm">
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="number" name="id" #unitId="ngModel" [(ngModel)]="unit.id"
@@ -22,7 +36,7 @@
                                 placeholder="Clase Secundaria">
                         </div>
                         <div class="input-field col s12">
-                            <input type="text" name="thirdclass" #unitTClass="ngModel" [(ngModel)]="unit.thirdclass"
+                            <input type="text" name="thirdClass" #unitTClass="ngModel" [(ngModel)]="unit.thirdClass"
                                 placeholder="Clase Terciaria">
                         </div>
                         <div class="input-field col s12">
@@ -34,7 +48,12 @@
                                 placeholder="Nivel Maximo">
                         </div>
                         <div class="card-action col s12">
-                            <button class="btn right" > Agregar </button>
+
+                            <button class="btn right" *ngIf="!unitSelect; else btnEditar" (click)="addUnit(unitForm)">
+                                Agregar </button>
+                            <ng-template #btnEditar> <button class="btn right" (click)="putUnits(unitForm)"> Editar
+                                </button></ng-template>
+
                             <button class="btn left" (click)="resetForm()"> Clean </button>
                         </div>
                     </div>
@@ -62,7 +81,7 @@
                     <td>{{ unit.name | uppercase}}</td>
                     <td>{{ unit.firstClass}}</td>
                     <td>{{ unit.secondClass}}</td>
-                    <td>{{ unit.thirdclass}}</td>
+                    <td>{{ unit.thirdClass}}</td>
                     <td>{{ unit.baseStarts}}</td>
                     <td>{{unit.maxStarts}}</td>
                     <td><a (click)="editUnit(unit)"><i class="material-icons">edit</i></a></td>
@@ -77,4 +96,4 @@
 
 <div class="container row 12" *ngFor="let unitStaged of unitsStaged">
     <input type="text">
-</div>
+</div>-->

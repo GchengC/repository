@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { Form } from '@angular/forms';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { UnitsTableComponent } from './units-table/units-table.component'
 
 import { UnitsService } from '../../Services/units.service'
 
 import { Units } from '../../Models/units';
+
+
 
 
 @Component({
@@ -13,29 +15,26 @@ import { Units } from '../../Models/units';
   providers: [UnitsService]
 })
 export class UnitsComponent implements OnInit {
+
+  @ViewChild('unitsTable', { static: false }) utable: UnitsTableComponent;
+
+
   unitsStaged: Units[];
+  unitSelect: boolean = false;
   unit: Units;
 
 
   constructor(private unitsService: UnitsService) {
-    this.unit = new Units;
   }
 
   ngOnInit() {
     this.getUnits();
   }
 
-  getUnits() {
-    this.unitsService.getUnits()
-      .subscribe(res => {
-        this.unitsService.units = res as Units[];
-        console.log(res);
-      });
-
-  }
 
   resetForm() {
-    this.unit = new Units;
+    //this.unit = new Units;
+    this.unitSelect = false;
   }
 
   addUnit() {
@@ -43,25 +42,43 @@ export class UnitsComponent implements OnInit {
     this.postUnits(this.unit);
   }
 
+  editUnit(unitSelect: Units) {
+    this.unit = unitSelect;
+    this.unitSelect = true;
+  }
+
   postUnits(unit: Units) {
     console.log(unit.id);
-    this.unitsService.postUnits(unit).subscribe(res =>{
+    this.unitsService.postUnits(unit).subscribe(res => {
       console.log("Guardado");
       this.resetForm();
       this.getUnits();
     });
   }
 
-  editUnit(unitSelect: Units) {
-    this.unit = unitSelect;
+  getUnits() {
+    this.unitsService.getUnits()
+      .subscribe(res => {
+        this.utable.dataSource = res as Units[];
+        console.log(res);
+      }, error => {
+        console.log(error);
+      });
+
   }
 
+  putUnits() {
+    this.unitsService.putUnits(this.unit)
+      .subscribe(res => { console.log("Unidad Modificada con Exito") })
+  }
+
+
   deleteUnit(id: number) {
-    this.unitsService.deleteUnits(id).subscribe(res => {
-      if (confirm("Estas Seguro que quiere eliminar la Unidad?")) {
+    if (confirm("Estas Seguro que quiere eliminar la Unidad?")) {
+      this.unitsService.deleteUnits(id).subscribe(res => {
         console.log(res);
         this.getUnits();
-      }
-    });
+      });
+    }
   }
 }
