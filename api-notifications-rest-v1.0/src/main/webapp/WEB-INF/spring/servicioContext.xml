@@ -1,0 +1,42 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+
+    <bean id="DataSourceDao" class="com.farmatodo.commons.database.DataSourceDao">
+        <property name="dataSource" ref="DataSource"/>
+    </bean>
+
+    <!-- Bean Service -->
+    <bean id="NotificationHeadService" class="com.farmatodo.notifications.service.NotificationHeadService">
+        <property name="gson" ref="Gson"/>
+        <property name="dataSourceDao" ref="DataSourceDao"/>
+    </bean>
+
+    <bean id="NotificationSchedService" class="com.farmatodo.notifications.service.NotificationSchedService">
+        <property name="gson" ref="Gson"/>
+        <property name="dataSourceDao" ref="DataSourceDao"/>
+    </bean>
+
+    <bean id="NotificationMiscService" class="com.farmatodo.notifications.service.NotificationMiscService">
+        <property name="gson" ref="Gson"/>
+        <property name="dataSourceDao" ref="DataSourceDao"/>
+    </bean>
+
+    <bean id="NotificationService" class="com.farmatodo.notifications.service.NotificationService">
+        <property name="gson" ref="Gson"/>
+        <property name="dataSourceDao" ref="DataSourceDao"/>
+    </bean>
+
+    <!-- Clase de entrada al servicio web -->
+    <jaxrs:server id="beansService" address="/rest">
+        <jaxrs:serviceBeans>
+            <ref bean="NotificationHeadService"/>
+            <ref bean="NotificationSchedService"/>
+            <ref bean="NotificationMiscService"/>
+            <ref bean="NotificationService"/>
+        </jaxrs:serviceBeans>
+    </jaxrs:server>
+</beans>

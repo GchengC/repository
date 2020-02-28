@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="consola" class="org.apache.log4j.ConsoleAppender">
+        <param name="ImmediateFlush" value="true"/>
+        <layout class="com.farmatodo.commons.log4j.FarmatodoPatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss,SSS}|%p|%m{0}|%m{1}|%m{2}|%m{3}|%m{4}|%m{5}|%m{6}|%m{7}|%m{8}|%m{9}|%m{10}|%m{11}%n"/>
+        </layout>
+    </appender>
+
+    <appender name="estandar" class="org.apache.log4j.DailyRollingFileAppender">
+        <param name="DatePattern" value="'.'yyyy-MM-dd"/>
+        <param name="File" value="${LOGS}api-notifications-rest/api-notifications-rest.log"/>
+        <layout class="com.farmatodo.commons.log4j.FarmatodoPatternLayout">
+            <param name="ConversionPattern"
+                   value="%d{yyyy-MM-dd HH:mm:ss,SSS}|%p|%m{0}|%m{1}|%m{2}|%m{3}|%m{4}|%m{5}|%m{6}|%m{7}|%m{8}|%m{9}|%m{10}|%m{11}%n"/>
+        </layout>
+    </appender>
+
+    <logger name="com.farmatodo.invoices" additivity="false">
+        <level value="INFO"/>
+        <appender-ref ref="consola"/>
+        <appender-ref ref="estandar"/>
+    </logger>
+
+</log4j:configuration>

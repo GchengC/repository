@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-web-app xmlns="http://xmlns.oracle.com/weblogic/weblogic-web-app">
+
+    <container-descriptor>
+        <prefer-web-inf-classes>false</prefer-web-inf-classes>
+        <prefer-application-packages>
+            <package-name>javax.faces.*</package-name>
+            <package-name>com.sun.faces.*</package-name>
+            <package-name>com.bea.faces.*</package-name>
+        </prefer-application-packages>
+
+    </container-descriptor>
+
+    <jsp-descriptor>
+        <keepgenerated>true</keepgenerated>
+        <debug>true</debug>
+    </jsp-descriptor>
+    <context-root>/api-notifications-rest</context-root>
+
+</weblogic-web-app>

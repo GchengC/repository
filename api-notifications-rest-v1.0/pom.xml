@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.farmatodo.notifications</groupId>
+    <artifactId>api-notifications-rest</artifactId>
+    <version>1.0</version>
+    <packaging>war</packaging>
+    <name>api-notifications-rest</name>
+
+    <properties>
+        <organization.name>Farmatodo, C.A.</organization.name>
+        <organization.url>http://www.farmatodo.com</organization.url>
+        <organization.provider.name>[nombre proveedor]</organization.provider.name>
+        <organization.provider.url>[url proveedor]</organization.provider.url>
+        <inception.year.app>2018</inception.year.app>
+        <compile.source>1.8</compile.source>
+        <compile.target>1.8</compile.target>
+        <encoding>utf-8</encoding>
+        <xref>true</xref>
+        <env></env>
+        <build.timestamp>${maven.build.timestamp}</build.timestamp>
+        <cache-api.version>1.0.0</cache-api.version>
+        <hazelcast-spring.version>3.11.2</hazelcast-spring.version>
+        <httpclient.version>4.1.3</httpclient.version>
+        <httpmime.version>4.1.3</httpmime.version>
+        <spring.version>4.3.4.RELEASE</spring.version>
+        <springsecurity.version>4.2.11.RELEASE</springsecurity.version>
+        <spring-context-support.version>4.3.4.RELEASE</spring-context-support.version>
+        <cxf.version>3.2.0</cxf.version>
+        <commons-farmatodo.version>6.3.2</commons-farmatodo.version>
+        <jackson-core-asl.version>1.9.13</jackson-core-asl.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commonsToInvoice.version>1.0</commonsToInvoice.version>
+    </properties>
+
+    <developers>
+        <developer>
+            <id>[id desarrollador]</id>
+            <name>[Romer] [Diaz]</name>
+            <email>[romer.diaz]@[farmatodo.com]</email>
+            <organization>${organization.name}</organization>
+            <organizationUrl>${organization.url}</organizationUrl>
+            <roles>
+                <role>[cargo]</role>
+            </roles>
+        </developer>
+    </developers>
+
+    <contributors>
+        <contributor>
+            <name>[Carlos] [Rodriguez]</name>
+            <organization>${organization.provider.name}</organization>
+            <organizationUrl>${organization.provider.url}</organizationUrl>
+            <roles>
+                <role>[Ing-Desarrollo]</role>
+            </roles>
+            <properties>
+                <gtalk>[direccion]@gmail.com</gtalk>
+            </properties>
+        </contributor>
+    </contributors>
+
+    <repositories>
+        <repository>
+            <id>central</id>
+            <url>http://repo1.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>codelds</id>
+            <url>https://code.lds.org/nexus/content/groups/main-repo</url>
+        </repository>
+        <repository>
+            <id>farmatodo.internal</id>
+            <name>Repositorio Central Farmatodo</name>
+            <url>http://svn.farmatodo.com:8080/repository/internal/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.farmatodo.commons.invoice</groupId>
+            <artifactId>commonsToInvoice</artifactId>
+            <version>${commonsToInvoice.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+            <version>${cache-api.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast-spring</artifactId>
+            <version>${hazelcast-spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+            <version>${httpclient.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpmime</artifactId>
+            <version>${httpmime.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-aspects</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring-context-support.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.cxf/cxf-bundle-jaxrs -->
+
+        <dependency>
+            <groupId>com.farmatodo.commons</groupId>
+            <artifactId>commons-farmatodo</artifactId>
+            <version>${commons-farmatodo.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.sun.jersey</groupId>
+                    <artifactId>jersey-bundle</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.codehaus.jackson</groupId>
+            <artifactId>jackson-core-asl</artifactId>
+            <version>${jackson-core-asl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${commons-codec.version}</version>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/com.thetransactioncompany/cors-filter -->
+        <dependency>
+            <groupId>com.thetransactioncompany</groupId>
+            <artifactId>cors-filter</artifactId>
+            <version>2.6</version>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <finalName>api-notifications-rest</finalName>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>${compile.source}</source>
+                    <target>${compile.target}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifestEntries>
+                            <Build-Provider>${organization.provider.name}</Build-Provider>
+                            <Build-Number>2.0</Build-Number>
+                            <Build-On>${build.timestamp}</Build-On>
+                            <Specification-Title>api-notifications-rest</Specification-Title>
+                            <Specification-Version>2.0 ${build.timestamp}</Specification-Version>
+                            <Specification-Vendor>${project.organization.name}</Specification-Vendor>
+                            <Implementation-Title>api-notifications-rest</Implementation-Title>
+                            <Implementation-Version>2.0 ${build.timestamp}</Implementation-Version>
+                            <Implementation-Vendor>${project.organization.name}</Implementation-Vendor>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resources</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/resources/${env}</directory>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-spring</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.outputDirectory}/spring</outputDirectory>
+                            <overwrite>true</overwrite>
+                            <resources>
+                                <resource>
+                                    <directory>src/main/java/spring/${env}</directory>
+                                    <excludes>
+                                        <exclude>**/desa/**</exclude>
+                                        <exclude>**/prod/**</exclude>
+                                    </excludes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.properties</include>
+                    <include>**/*.xml</include>
+                </includes>
+                <excludes>
+                    <exclude>**/desa/**</exclude>
+                    <exclude>**/prod/**</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>**/desa/**</exclude>
+                    <exclude>**/prod/**</exclude>
+                </excludes>
+            </resource>
+        </resources>
+    </build>
+
+</project>
